@@ -1,0 +1,135 @@
+Fully qualified name 
+====================
+Fully qualified name means we can declare a class or interface along with package name.
+ex:
+	java.io.File (C)
+	java.io.Serializable (I)
+
+Fully qualified name will improve readability of our code.
+
+We should use fully qualified name when a class present in two different packages.
+
+ex:
+---
+class Test 
+{
+	public static void main(String[] args)
+	{
+		java.util.Date d=new java.util.Date();
+		System.out.println(d);		
+	}
+}
+
+Import statements
+===================
+Whenever we are using import statements we should not use fully qualified name. 
+
+Using short name also we can achieve.
+
+In java, We have three types of import statements.
+
+1) Explicit class import 
+
+2) Implicit class import 
+
+3) Static import 
+
+
+1) Explicit class import 
+-----------------------
+This type of import statement is highly recommanded to use because it will improve readability of our code.
+
+ex:
+---
+import java.util.Date;
+class Test 
+{
+	public static void main(String[] args)
+	{
+		Date d=new Date();
+		System.out.println(d);		
+	}
+}
+
+ex:
+---
+import java.time.LocalDate;
+import java.time.LocalTime;
+class Test 
+{
+	public static void main(String[] args)
+	{
+		LocalDate d = LocalDate.now();
+		LocalTime t = LocalTime.now();
+
+		System.out.println(d);
+		System.out.println(t);		
+	}
+}
+
+2) Implicit class import
+------------------------
+This type of import statement is not recommanded to use because it will reduce readability of our code.
+
+ex:
+--
+import java.time.*;
+class Test 
+{
+	public static void main(String[] args)
+	{
+		LocalDate d = LocalDate.now();
+		LocalTime t = LocalTime.now();
+
+		System.out.println(d);
+		System.out.println(t);		
+	}
+}
+
+
+3) Static import 
+----------------
+Using static import we can call static members directly i.e static variables and static methods.
+
+Often use of static import makes our program complex and unreadable.
+
+ex:
+---
+import static java.lang.System.*;
+class Test 
+{
+	public static void main(String[] args)
+	{
+		out.println("stmt1");
+		out.println("stmt2");
+		out.println("stmt3");	
+	}
+}
+
+ex:
+---
+import static java.lang.System.*;
+class Test 
+{
+	public static void main(String[] args)
+	{
+		out.println("stmt1");
+		exit(0);
+		out.println("stmt3");	
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

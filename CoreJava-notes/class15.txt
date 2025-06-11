@@ -1,0 +1,227 @@
+Var-arg method 
+===============
+Untill 1.4 version, it is not possible to declare a method with variable number of arguments.
+
+But from 1.5 version , it is possible to declare a method with variable number of arguments.
+
+We can declare var-arg method as follow.
+ex:
+			var-arg parameter
+			    |
+	               ---------
+	void methodOne(int...  i)
+			   |
+			ellipse 
+
+We can invoke var-arg method with any number of integer values including zero.
+
+
+ex:
+---
+class Test 
+{
+	public static void main(String[] args)
+	{
+		methodOne();
+	}
+	//static method 
+	public static void methodOne()
+	{
+		System.out.println("M1-Method");
+	}
+}
+
+ex:
+---
+class Test 
+{
+	public static void main(String[] args)
+	{
+		methodOne(10);
+	}
+	//static method 
+	public static void methodOne(int i)
+	{
+		System.out.println("M1-Method");
+	}
+}
+
+ex:
+---
+class Test 
+{
+	public static void main(String[] args)
+	{
+		methodOne();
+		methodOne(10);
+		methodOne(10,20);
+		methodOne(10,20,30);
+		methodOne(10,20,30,40);
+	}
+	//static method 
+	public static void methodOne(int... i)
+	{
+		System.out.println("Var-Arg-Method");
+	}
+}
+
+case1: 
+------
+	We can mix var-arg parameter with general parameter.
+	ex:
+		methodOne(int x,int... y)
+
+case2:
+-----
+	If we mix var-arg parameter with general parameter then var-arg parmeter must be last 
+	parameter.
+	ex:
+		methodOne(int x,int... y)
+
+		methodOne(int... x,int y) //invalid 
+
+case3:
+------
+	A var-arg method can have only one var-arg parameter.
+	ex:
+		methodOne(int... x)
+
+		methodOne(int... x,int... y) //invalid 
+
+
+Java Source File Structure 
+==========================
+case1:
+------
+	A java program can have multiple classes.
+
+
+case2:
+-----
+	If a java program contains multiple classes then we need to check which class contains 
+	main method and that class treated as main class.
+	ex:
+		Test.java
+		----------
+		class A 
+		{
+			- //some logic 
+		}	
+		class Test 
+		{
+			public static void main(String[] args)
+			{
+				-
+				- //logic 
+				-
+			}
+		}
+
+
+case3:
+------
+	If multiple classes contains main method then we can save that program name with any name.
+	
+	ex:
+		Ihub.java
+		----------
+		class A 
+		{
+			public static void main(String[] args)
+			{
+				System.out.println("A-class");	
+			}
+		}
+		class B 
+		{
+			public static void main(String[] args)
+			{
+				System.out.println("B-class");	
+			}
+		}
+		class C 
+		{
+			public static void main(String[] args)
+			{
+				System.out.println("C-class");	
+			}
+		}
+	
+		If we compile above program we will get three .class files i.e 
+		A.class,B.class and C.class.
+		ex:
+			javac   Ihub.java
+		
+		To execute above program we need to use below command.
+		ex:
+			java   A (A class will execute)
+			java   B (B class will execute)
+			java   C (C class will execute)
+		
+case4:
+------
+	If multiple classes contains main method then we need to declare any one class public. 
+	That public class treated as main class and we need to save our program name with public class
+	name only.
+	ex:
+		A.java
+		----------
+		public class A 
+		{
+			public static void main(String[] args)
+			{
+				System.out.println("A-class");	
+			}
+		}
+		class B 
+		{
+			public static void main(String[] args)
+			{
+				System.out.println("B-class");	
+			}
+		}
+		class C 
+		{
+			public static void main(String[] args)
+			{
+				System.out.println("C-class");	
+			}
+		}
+	
+		If we compile above program we will get three .class files i.e 
+		A.class,B.class and C.class.
+		ex:
+			javac   Ihub.java
+		
+		To execute above program we need to use below command.
+		ex:
+			java   A (A class will execute)
+			java   B (B class will execute)
+			java   C (C class will execute)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+

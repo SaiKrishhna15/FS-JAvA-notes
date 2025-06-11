@@ -1,0 +1,178 @@
+Java 
+======
+
+Software		:	JDK 11
+
+Version			:	Java 8 
+
+Creator			:	James Gosling 
+
+Vendor			:	Oracle Corporation 
+
+Open source		:	Open source 
+
+Website			:	www.oracle.com/java
+
+Tutorials 		:	www.javatpoint.com 
+				www.javaus.com 
+				www.tutorialspoint.com 
+				www.dzone.com 
+				and etc.
+
+Download link 		:
+
+https://drive.google.com/file/d/1TzzQblDin_ANPnI4o7c_eNPTHAHGKDyK/view?usp=sharing
+
+
+
+Steps to setup environmental variables
+=======================================
+step1:
+------
+	Make sure JDK 11 installed successfully.
+
+step2:
+------
+	Copy lib directory from "JAVA_HOME" folder.
+	ex:
+		C:\Program Files\Java\jdk-11\lib
+
+step3:
+------
+	Paste lib directory in envionmental variables.
+	ex:
+		right click to This PC --> properties --> Advanced system settings -->
+		environmental variables --> user variables --> click to new button -->
+		variable name : CLASSPATH
+		variable value : C:\Program Files\Java\jdk-11\lib; --> ok.
+		
+		system variable --> click to new button -->
+		variable name : path 
+		variable value : C:\Program Files\Java\jdk-11\bin; --> ok --> ok -->ok.
+
+step4:
+-----
+	Check environmental setup done perfect or not.
+	ex:
+		cmd> javap 
+		cmd> java  -version 
+
+
+
+Steps to develop first java application 
+========================================
+
+step1:
+-----
+	Make sure JDK 11 installed successfully.
+
+step2:
+------
+	Make sure environmental setup done perfectly.
+
+step3:
+-----
+	Create a "javaprog" folder inside 'D' drive.
+
+step4:
+------
+	Open the notepad and develop a simple Hello World program.
+	ex:
+		class Test
+		{	
+			public static void main(String[] args)
+			{
+				System.out.println("Hello World");
+			}
+		}
+
+step5:
+------
+	Save above program with same name as class name inside "javaprog" folder.
+
+step6:
+------
+	Open the command prompt from javaprog location.
+
+step7:
+------
+	Compile above program by using below command.
+	ex:
+		javac    Test.java 
+				|
+				filename 
+	
+step8:
+------
+	Run above program by using below command.
+	ex:
+		java    Test 
+			|
+			class_name 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

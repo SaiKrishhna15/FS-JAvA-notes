@@ -1,0 +1,372 @@
+Types of blocks in java
+=======================
+A block is a set of statements which is enclosed in a curly braces i.e {}.
+
+In java, we have three types of blocks.
+
+1) Instance block 
+
+2) Static block 
+
+3) Local block 	
+
+
+1) Instance block 
+-----------------
+Instance block is used to initialize the instance variables.
+
+Instance block must and should declare immediately after the class.
+
+Instance block will execute when we create an object.
+
+We can declare instance block as follow.
+
+syntax:
+------
+	//instance block 
+	{
+		-
+		- //set of statements 
+		-
+	}
+
+ex:
+---
+class Test  
+{
+	//instance block
+	{
+		System.out.println("instance-block");
+	}
+	public static void main(String[] args) 
+	{
+		System.out.println("Main-Method");	
+	}
+}
+o/p:
+	main-method
+
+ex:
+---
+class Test  
+{
+	//instance block
+	{
+		System.out.println("instance-block");
+	}
+	public static void main(String[] args) 
+	{
+		System.out.println("Main-Method");
+		Test t=new Test();
+	}
+}
+o/p:
+	main-method
+	instance-block
+
+ex:
+---
+class Test  
+{
+	//instance block
+	{
+		System.out.println("instance-block");
+	}
+	public static void main(String[] args) 
+	{
+		Test t1=new Test();
+		System.out.println("Main-Method");
+		Test t2=new Test();
+	}
+}
+o/p:
+	instance-block
+	main-method 
+	instance-block 
+
+ex:
+---
+class Test  
+{
+	//instance variable
+	int i;
+	
+	//instance block 
+	{
+		i=100;
+	}
+	
+	public static void main(String[] args) 
+	{
+		Test t=new Test();
+		System.out.println(t.i); //100
+	}
+}
+
+2) Static block
+---------------
+Static block is used to initialize the static variables.
+
+Static block must and should declare immediately after the class using static keyword.
+
+Static block will execute at the time of classloading.
+
+We can declare static block as follow.
+
+syntax:
+-------
+	//static block 
+	static
+	{
+		-
+		- //code to be execute 
+		-
+	}
+
+ex:
+---
+class Test  
+{
+	//static block 
+	static
+	{
+		System.out.println("static-block");
+	}
+	
+	public static void main(String[] args) 
+	{
+		System.out.println("main-method");
+	}
+}
+o/p:
+	static-block 
+	main-method 
+
+ex:
+---
+class Test  
+{
+	//instance block
+	{
+		System.out.println("instance-block");
+	}
+	
+	//static block
+	static
+	{
+		System.out.println("static-block");
+	}
+	
+	public static void main(String[] args) 
+	{
+		Test t=new Test();
+		System.out.println("main-method");
+	}
+}
+o/p:
+	static-block
+	instance-block
+	main-method 
+
+ex:
+---
+class Test  
+{
+	//static variable 
+	static int i;
+	
+	//static block 
+	static
+	{
+		i=200;
+	}
+	
+	public static void main(String[] args) 
+	{
+		System.out.println(i); //200
+	}
+}
+
+3) Local block 
+--------------
+Local block is used to initialize the local variables.
+
+Local block must and should declare inside methods.
+
+Local block will execute just like a normal statement.
+
+We can declare local block as follow.
+
+syntax:
+	//local block 
+	{
+		-	
+		-  //set of statements 
+		-	
+	}
+
+ex:
+---
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		System.out.println("stmt1");
+		//local block 
+		{
+			System.out.println("stmt2");
+		}
+		System.out.println("stmt3");
+	}
+}
+
+ex:
+--
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		//local variable 
+		int i;
+		
+		//local block 
+		{
+			i=300;
+		}
+		
+		System.out.println(i); //300
+	}
+}
+
+
+Interview Question 
+==================
+
+Q) Can we execute java program without main method?
+
+Yes, Till 1.6 version it is possible to execute java program without main method using static block.
+But from 1.7 version onwards it is not possible to execute java program without main method.
+
+ex:
+class Test  
+{
+	//static block 
+	static
+	{
+		System.out.println("Hello World");
+		System.exit(0);
+	}
+}
+
+
+Operators 
+==========
+Operator is a symbol which is used to perform some operations on operands.
+ex:
+	c = a + b;
+
+	Here a,b and c are operands.
+	Here = and + are operators.
+
+We have following list of operators in java.
+
+1) Assignment operators 
+
+2) Conditional/Ternary operators 
+
+3) Logical operators 
+
+4) Bitwise operators 
+
+5) Arithmetic operators 
+
+6) Relational operators 
+
+7) Shift operators 
+
+8) Unary operators 
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

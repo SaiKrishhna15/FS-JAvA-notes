@@ -1,0 +1,586 @@
+2)join() 
+=========
+If a thread wants to wait untill the completion of some other thread then we need to use join() method.
+
+A join() method throws one checked exception called InterruptedException so we must and should handle
+that exception by using try and catch block or by using throws statement.
+
+ex:
+	public final void join()throws InterruptedException 
+	public final void join(long ms)throws InterruptedException 
+	public final void join(long ms,int ns)throws InterruptedException 
+
+Diagram: class47.1
+
+ex:
+----
+class MyThread extends Thread 
+{
+	public void run()
+	{
+		for(int i=1;i<=5;i++)
+		{
+			System.out.println("Child-Thread");
+		}
+	}
+}
+class  Test 
+{
+	public static void main(String[] args)throws InterruptedException 
+	{
+		MyThread t=new MyThread();
+		
+		t.start();
+		t.join();
+		
+		for(int i=1;i<=5;i++)
+		{
+			System.out.println("Parent-Thread");
+		}
+	}
+}
+
+
+3) sleep()
+==========
+If thread don't want to perform any operation on perticular amount of time then we need to use 
+sleep() method.
+
+A sleep() method will throw one checked exception called InterruptedException so we must and should 
+handle that exception by using try and catch block or by using throws statement.
+
+ex:
+	public static native void sleep()throws InterruptedException 
+	public static native void sleep(long ms)throws InterruptedException 
+	public static native void sleep(long ms,int ns)throws InterruptedException 
+
+Diagram: class47.2
+
+ex:
+----
+class MyThread extends Thread 
+{
+	public void run()
+	{
+		for(int i=1;i<=5;i++)
+		{
+			System.out.println("Child-Thread");
+			try
+			{
+				Thread.sleep(3000);
+			}
+			catch (InterruptedException ie)
+			{
+				ie.printStackTrace();
+			}
+		}
+	}
+}
+class  Test 
+{
+	public static void main(String[] args)
+	{
+		MyThread t=new MyThread();
+		
+		t.start();
+		
+		for(int i=1;i<=5;i++)
+		{
+			System.out.println("Parent-Thread");
+		}
+	}
+}
+
+
+Problem without synchronization 
+================================
+If there is no synchronization then we will face following problems.
+
+1) Data inconsistency 
+
+2) Thread Interference 
+
+ex:
+----
+class Table 
+{
+	void printTable(int n)
+	{
+		for(int i=1;i<=5;i++)
+		{
+			System.out.println(n*i);
+			try
+			{
+				Thread.sleep(2000);
+			}
+			catch (InterruptedException ie)
+			{
+				ie.printStackTrace();
+			}
+		}
+	}
+}
+class MyThread1 extends Thread 
+{
+	Table t;
+	MyThread1(Table t)
+	{
+		this.t=t;
+	}
+	public void run()
+	{
+		t.printTable(5);
+	}
+}
+class MyThread2 extends Thread 
+{
+	Table t;
+	MyThread2(Table t)
+	{
+		this.t=t;
+	}
+	public void run()
+	{
+		t.printTable(10);
+	}
+}
+class Test 
+{
+	public static void main(String[] args)
+	{
+		Table obj=new Table();
+		MyThread1 t1= new MyThread1(obj);
+		MyThread2 t2= new MyThread2(obj);
+		t1.start();
+		t2.start();
+	}
+}
+
+
+Synchronization 
+=================
+A synchronized keyword is applicable for methods and blocks.
+
+It allows only one thread to execute on given object. Hence we can achieve thread safety.
+
+The main advantage of synchronization is,  we can solve data inconsistency problem.
+
+The main disadvantage of synchronization is , waiting time of a thread will increase which effects the 
+performance.
+
+If there is a specific requirement is there then only goto synchronization.
+
+It internall uses lock mechanism.
+
+When a thread wants to access any object. If it has to acquire the lock of an object and released it 
+when thread complete it's task.
+
+In synchronized method threads will get the lock of an object automatically.
+
+If a thread executing synchronized method  on current object then other threads are not 
+allowed to execute other synchronized methods.But other threads can execute non-synchronized methods
+concurently.
+
+ex:
+----
+class Table 
+{
+	synchronized void printTable(int n)
+	{
+		for(int i=1;i<=5;i++)
+		{
+			System.out.println(n*i);
+			try
+			{
+				Thread.sleep(2000);
+			}
+			catch (InterruptedException ie)
+			{
+				ie.printStackTrace();
+			}
+		}
+	}
+}
+class MyThread1 extends Thread 
+{
+	Table t;
+	MyThread1(Table t)
+	{
+		this.t=t;
+	}
+	public void run()
+	{
+		t.printTable(5);
+	}
+}
+class MyThread2 extends Thread 
+{
+	Table t;
+	MyThread2(Table t)
+	{
+		this.t=t;
+	}
+	public void run()
+	{
+		t.printTable(10);
+	}
+}
+class Test 
+{
+	public static void main(String[] args)
+	{
+		Table obj=new Table();
+		MyThread1 t1= new MyThread1(obj);
+		MyThread2 t2= new MyThread2(obj);
+		t1.start();
+		t2.start();
+	}
+}
+
+synchronized block 
+===================
+If we want to perform synchronization on specific resource of a program then we need to use 
+synchronized block.
+ex:
+	Suppose we have 100 lines of code but we want to perform synchronization 
+	only for 10 lines then we need to use synchronized block.
+
+If we keep all the logic in synchronized block then it acts like a synchronized method.
+
+ex:
+---
+class Table 
+{
+	void printTable(int n)
+	{
+		synchronized(this)
+		{
+		for(int i=1;i<=5;i++)
+		{
+			System.out.println(n*i);
+			try
+			{
+				Thread.sleep(2000);
+			}
+			catch (InterruptedException ie)
+			{
+				ie.printStackTrace();
+			}
+		}
+		}//synch 
+	}
+}
+class MyThread1 extends Thread 
+{
+	Table t;
+	MyThread1(Table t)
+	{
+		this.t=t;
+	}
+	public void run()
+	{
+		t.printTable(5);
+	}
+}
+class MyThread2 extends Thread 
+{
+	Table t;
+	MyThread2(Table t)
+	{
+		this.t=t;
+	}
+	public void run()
+	{
+		t.printTable(10);
+	}
+}
+class Test 
+{
+	public static void main(String[] args)
+	{
+		Table obj=new Table();
+		MyThread1 t1= new MyThread1(obj);
+		MyThread2 t2= new MyThread2(obj);
+		t1.start();
+		t2.start();
+	}
+}
+
+Static synchronization 
+=======================
+In static synchronization the lock will be on class but not on object.
+
+If we declare any static method as synchronized then that method is called static synchronization.
+
+ex:
+---
+class Table 
+{
+	static synchronized void printTable(int n)
+	{
+		
+		for(int i=1;i<=5;i++)
+		{
+			System.out.println(n*i);
+			try
+			{
+				Thread.sleep(2000);
+			}
+			catch (InterruptedException ie)
+			{
+				ie.printStackTrace();
+			}
+		}
+	}
+}
+class MyThread1 extends Thread 
+{
+	public void run()
+	{
+		Table.printTable(5);
+	}
+}
+class MyThread2 extends Thread 
+{
+	public void run()
+	{
+		Table.printTable(10);
+	}
+}
+class Test 
+{
+	public static void main(String[] args)
+	{
+		MyThread1 t1= new MyThread1();
+		MyThread2 t2= new MyThread2();
+		t1.start();
+		t2.start();
+	}
+}
+
+
+Inter Thread communication 
+===========================
+Two threads can cummunicate with each other by using wait(), notify() and notifyAll() method.
+
+A wait(), notify() and notifyAll() are methods of Object class but not Thread class.
+
+A thread which is waiting for notification has to call wait() method.
+
+A thread which is giving the notification has to call notify() or notifyAll() method.
+
+To call wait(), notify() or notifyAll() method compulsary we required synchronized area otherwise 
+we will get IllegalStateMonitorException.
+
+If a thread calls wait() method, then that thread will release the lock immediately and goes to 
+waiting state.
+
+If a thread calls notify() or notifyAll() method then that thread will release the lock but not immediately.
+
+Except wait(), notify() or notifyAll() method  there is no way to release the lock.
+
+ex:
+----
+class MyThread extends Thread 
+{
+	int total=0;
+	
+	public void run()
+	{
+		synchronized(this)
+		{
+			System.out.println("Child started calculation");
+			
+			for(int i=1;i<=10;i++)
+			{
+				total+=i;	
+			}
+			
+			System.out.println("Child giving notification");
+			this.notify();
+		}
+	}
+}
+class Test 
+{
+	public static void main(String[] args)throws InterruptedException 
+	{
+		MyThread t = new MyThread();
+		t.start();
+		synchronized(t)
+		{
+			System.out.println("Main method waiting for notification");
+			t.wait();
+			System.out.println("Main method got notification");
+			System.out.println(t.total);
+		}
+	}
+}
+
+DeadLock in java
+=================
+DeadLock will occur in a situation where one thread is waiting for object lock which is acquired by 
+another thread and that thread is waiting to access the object lock which is acquired by first thread.
+Here both the threads are ready to release the lock but nobody will release this situation is called 
+deadlock.
+
+ex:
+---
+
+class Test 
+{
+	public static void main(String[] args)throws InterruptedException 
+	{
+		final String res1="hi";
+		final String res2="bye";
+		
+		//anonymous inner class 
+		Thread t1=new Thread()
+		{
+			public void run()
+			{
+				synchronized(res1)
+				{
+					System.out.println("Thread1: Locking Resource1");
+					synchronized(res2)
+					{
+						System.out.println("Thread1: Locking Resource2");
+					}
+				}
+			}
+		};
+		
+		//anonymous inner class 
+		Thread t2=new Thread()
+		{
+			public void run()
+			{
+				synchronized(res2)
+				{
+					System.out.println("Thread2: Locking Resource2");
+					synchronized(res1)
+					{
+						System.out.println("Thread2: Locking Resource1");
+					}
+				}
+			}
+		};
+		
+		t1.start();
+		t2.start();
+	}
+}
+
+Disadvantages of Multithreading 
+===============================
+1) DeadLock 
+
+2) Thread Starvation 
+
+3) Debugging 
+
+
+Java 8 Features 
+================
+
+Functional interface 
+=====================
+Functional interface introduced in Java 8.
+
+Interface which contains only one abstract method is called function interface.
+
+It can have any number of default methods and static methods.
+
+It is also known as SAM interface or Single Abstract Method interface.
+
+The main objective of functional interface is to achieve functional programming.
+
+ex:
+	a=f1(){}
+
+	f1(f2(){})
+	{
+	}
+@FunctionalInterface annotation is used to declare functional interface which is optional.
+
+syntax:
+------
+	@FunctionalInterface 
+	interface <interface_name>
+	{
+		- //1 abstract method 
+		- // default methods 
+		- // static methods 
+	}
+
+ex:
+----
+@FunctionalInterface
+interface A 
+{
+	public abstract void m1();
+}
+class B implements A 
+{
+	public void m1()
+	{
+		System.out.println("M1-Method");
+	}
+}
+class Test 
+{
+	public static void main(String[] args)
+	{
+		A a = new B();
+		a.m1();
+	}
+}
+
+ex:
+----
+@FunctionalInterface
+interface A 
+{
+	public abstract void m1();
+}
+class Test 
+{
+	public static void main(String[] args)
+	{
+		A a = new A()
+		{
+			public void m1()
+			{
+				System.out.println("From M1 Method");
+			}
+		};
+		a.m1();
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

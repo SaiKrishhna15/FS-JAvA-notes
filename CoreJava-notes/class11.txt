@@ -1,0 +1,134 @@
+Command line argument 
+=====================
+Arguments which are passing through command prompt such type of arguments are called command line arguments.
+
+In command line arguments we need to pass our inputs at runtime command.
+
+ex:
+	javac    Test.java
+
+	java     Test  101  raja  M   1000.0
+                        |    |    |    |______args[3]
+			|    |    |___________args[2]
+			|    |________________args[1]
+			|_____________________args[0]
+
+ex:
+---
+class Test 
+{
+	public static void main(String[] args)
+	{
+		System.out.println(args[0]);
+		System.out.println(args[1]);
+		System.out.println(args[2]);
+		System.out.println(args[3]);
+	}
+}
+
+
+System.out.println()
+====================
+It is a output statement in java.
+
+Whenever we want to display any userdefined statements or data then we need to use output statement in java.
+
+syntax:
+------
+	static variable 
+		|
+	System.out.println()
+	|		|
+predefined 		predefined method 
+final class
+
+Diagram: class11.1
+
+ex:
+---
+class Test 
+{
+	public static void main(String[] args)
+	{
+		System.out.println("stmt1");
+		System.out.println("stmt2");
+	}
+}
+o/p:
+	stmt1
+	stmt2
+ex:
+----
+class Test 
+{
+	public static void main(String[] args)
+	{
+		System.out.print("stmt1");
+		System.out.print("stmt2");
+	}
+}
+o/p:
+	stmt1stmt2
+
+ex:
+---
+class Test 
+{
+	public static void main(String[] args)
+	{
+		float f=10.678954f;
+
+		System.out.printf("%.2f",f);
+	}
+}
+
+Various ways to display the variables in java
+---------------------------------------------
+1)
+	System.out.println("Hello World");
+
+2)
+	int i=10;
+	System.out.println(i); 
+	System.out.println("The value is ="+i);
+
+3) 
+	int i=10,j=20;
+	System.out.println(i+" "+j);
+	System.out.println(i+" and "+j);
+
+4)
+	int i=1,j=2,k=3;
+	System.out.println(i+" "+j+" "+k);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

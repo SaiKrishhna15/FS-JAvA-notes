@@ -1,0 +1,608 @@
+ex:
+
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		boolean b =  (5>2) || (6<2) && (10>20);
+		
+		System.out.println(b); // true 
+	}
+}
+
+ex:
+---
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		boolean b =  false || true && false;
+		
+		System.out.println(b); //false 
+	}
+}
+
+
+Q) Write a java program to find out given number is even or odd?
+
+
+import java.util.Scanner;
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		Scanner sc=new Scanner(System.in);
+		
+		System.out.println("Enter the number :");
+		int n = sc.nextInt(); // 10
+		
+		String str = ((n&1)==0)?"It is even number":"It is odd number";
+		
+		System.out.println(str);
+	}
+}
+/*
+	5 - 0101
+	1 - 0001
+	---------
+	& - 0001
+	
+	10 - 1010
+	1  - 0001
+	---------
+	&  - 0000
+	
+*/
+
+
+
+
+
+5) Arithmetic operators 
+=======================
+% - modules 
+/ - division 
+* - multiplication 
++ - addition 
+- - subtraction 
+
+ex:
+---
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		int i = 5+6/3+7/10+2+6%3+6%10+7*4-20;
+		System.out.println(i);
+	}
+}
+/*
+	5 + 6/3 + 7/10 + 2 + 6%3 + 6%10 + 7*4 - 20
+	
+	5 + 2 + 0 + 2 + 0 + 6 + 28 - 20 
+	
+	43 - 20 = 23
+*/
+
+
+6) Relational operators 
+========================
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		System.out.println(10>20); // false 
+		
+		System.out.println(10<20); // true 
+		
+		System.out.println(10>=5); // true 
+		
+		System.out.println(10<=3); // false 
+	}
+}
+
+ex:
+---
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		System.out.println(10 == 10); // true
+		
+		System.out.println(10 == 20); // false
+		
+		System.out.println(10 != 20); // true 
+		
+		System.out.println(10 != 10); // false
+	}
+}
+
+
+7) Shift operators 
+===================
+
+Right shift operator (>>)
+-------------------------
+10 >> 1  = 10/2 
+
+10 >> 2  = 10/4 (2*2)
+
+10 >> 3  = 10/8 (2*2*2)
+
+10 >> 4  = 10/16 (2*2*2*2)
+
+ex:
+---
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		int i = 20 >> 4;
+		
+		System.out.println(i); // 20/16 = 1 
+	}
+}
+
+ex:
+---
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		int i = 10 >> 6;
+		
+		System.out.println(i); // 10/64 = 0
+	}
+}
+
+
+Left shift operator (<<)
+-------------------------
+10 << 1  = 10*2 
+
+10 << 2  = 10*4 (2*2)
+
+10 << 3  = 10*8 (2*2*2)
+
+10 << 4  = 10*16 (2*2*2*2)
+
+ex:
+---
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		int i = 10 << 2;
+		
+		System.out.println(i); // 10 * 4 = 40
+	}
+}
+
+ex:
+---
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		int i = 100 << 4;
+		
+		System.out.println(i); // 100 * 16 = 1600
+	}
+}
+
+8) Unary operators
+===================
+
+Increment/Decrement operators (++/--)
+--------------------------------------
+We have two types of increment operators.
+
+1) Pre-increment 
+	ex:
+		++i;
+
+2) Post-increment 
+	ex:
+		i++;
+
+We have two types of decrement operators.
+
+1) Pre-decrement 
+	ex:
+		--i;
+
+2) Post-decrement 
+	ex:
+		i--;
+
+Post Increment/Decrement 
+------------------------
+Rule1: First Take 
+Rule2: Then Change 
+
+
+ex:
+---
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		int i=10;
+		
+		i++;
+		
+		System.out.println(i); // 11
+	}
+}
+
+ex:
+---
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		int i=10;
+		
+		System.out.println(i++); //10
+	}
+}
+
+ex:
+---
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		int i=10;
+		
+		int j = i++;
+		
+		System.out.println(i+" "+j); //11  10
+	}
+}
+
+ex:
+---
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		int i=10;
+		
+		int j = i++ + i++; // 10 + 11 
+		
+		System.out.println(i+" "+j); // 12 21
+	}
+}
+
+ex:
+---
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		int i=10;
+		
+		int j = i-- + i--; // 10 + 9
+		
+		System.out.println(i+" "+j); // 8  19
+	}
+}
+
+ex:
+---
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		int i=10;
+		
+		int j = i++ + i++ + i++; // 10 + 11 + 12 
+		
+		System.out.println(i+" "+j); // 13  33
+	}
+}
+
+Pre Increment/Decrement 
+------------------------
+Rule1: First Change 
+Rule2: Then Take 
+
+ex:
+---
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		int i=10;
+		
+		++i;
+		
+		System.out.println(i); // 11
+	}
+}
+
+ex:
+---
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		int i=10;
+		
+		System.out.println(++i); // 11
+	}
+}
+
+ex:
+---
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		int i=10;
+		
+		int j = ++i;
+		
+		System.out.println(i+" "+j); //11  11
+	}
+}
+
+ex:
+---
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		int i=10;
+		
+		int j = ++i + ++i; //11 + 12 
+		
+		System.out.println(i+" "+j); // 12  23
+	}
+}
+
+ex:
+---
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		int i=10;
+		
+		int j = --i + --i; // 9 + 8 
+		
+		System.out.println(i+" "+j); // 8  17
+	}
+}
+
+ex:
+---
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		int i=10;
+		
+		int j = ++i + ++i + ++i;//11 + 12 + 13
+		
+		System.out.println(i+" "+j); // 13  36 
+	}
+}
+
+ex:
+---
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		int i=100;
+		
+		100++;
+		
+		System.out.println(i); // C.T.E 
+	}
+}
+
+ex:
+---
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		int i=100;
+		
+		System.out.println((++i)++); // C.T.E  
+	}
+}
+
+ex:
+---
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		int i=10;
+		
+		System.out.println(i++ + ++i); // 10 + 12  = 22
+	}
+}
+
+
+ex:
+---
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		byte b=127;
+
+		b++;
+
+		System.out.println(b); // -128 		
+	}
+}
+
+
+
+
+
+
+
+
+Control Statements 
+==================
+Control statement enables the programmer to control flow of a program.
+
+Control statement allows a programmer to make decisions, to jump from one section of code to another section and to execute the code repeatedly.
+
+In java, we have three control statements.
+
+1) Decision Making Statement 
+
+2) Iteration Statement 
+
+3) Jump Statement 
+
+1) Decision Making Statement 
+----------------------------
+It is used to declare the condition in our program.
+
+Decision making statement is possible by using following ways.
+
+i) if stmt 
+
+ii) if else stmt 
+
+iii) if else if ladder 
+
+iv) nested if stmt
+
+v) switch case 
+
+
+i) if stmt 
+------------
+It executes the source code only if our condition is true.
+
+syntax:
+------
+	if(condition)
+	{
+		-
+		- //code to be execute 
+		-
+	}
+
+ex:
+---
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		System.out.println("stmt1");
+		
+		if(5>2)
+		{
+			System.out.println("stmt2");
+		}
+		
+		System.out.println("stmt3");
+	}
+}
+o/p:
+	stmt1
+	stmt2
+	stmt3
+
+ex:
+----
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		System.out.println("stmt1");
+		
+		if(5>20)
+		{
+			System.out.println("stmt2");
+		}
+		
+		System.out.println("stmt3");
+	}
+}
+o/p:
+	stmt1
+	stmt3
+
+ex:
+---
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		if(!(5>2))
+			System.out.println("stmt1");
+			System.out.println("stmt2");
+			System.out.println("stmt3");	
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

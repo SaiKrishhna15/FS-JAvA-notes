@@ -1,0 +1,535 @@
+iii) nested if stmt 
+===================
+If statement contains another if statement is called nested if stmt.
+
+syntax:
+-----
+	if(condition)
+	{
+		if(condition)
+		{	
+			-
+			- //code to be execute
+			-
+		}
+	}
+
+ex:
+----
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		System.out.println("stmt1");
+		
+		if(5>2)
+		{
+			System.out.println("stmt2");
+			
+			if(true)
+			{
+				System.out.println("stmt3");
+			}
+			
+			System.out.println("stmt4");
+		}
+		
+		System.out.println("stmt5");
+	}
+}
+o/p:
+	stmt1
+	stmt2
+	stmt3
+	stmt4
+	stmt5
+
+ex:
+----
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		System.out.println("stmt1");
+		
+		if(5>20)
+		{
+			System.out.println("stmt2");
+			
+			if(true)
+			{
+				System.out.println("stmt3");
+			}
+			
+			System.out.println("stmt4");
+		}
+		
+		System.out.println("stmt5");
+	}
+}
+o/p:
+	stmt1
+	stmt5
+
+ex:
+---
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		System.out.println("stmt1");
+		
+		if(5>2)
+		{
+			System.out.println("stmt2");
+			
+			if(false)
+			{
+				System.out.println("stmt3");
+			}
+			
+			System.out.println("stmt4");
+		}
+		
+		System.out.println("stmt5");
+	}
+}
+o/p:
+	stmt1
+	stmt2
+	stmt4
+	stmt5
+
+
+Q) Write a java program to find out given number is positive or negative using nested if stmt?
+
+
+import java.util.Scanner;
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		Scanner sc=new Scanner(System.in);
+		
+		System.out.println("Enter the number :");
+		int n = sc.nextInt();
+		
+		if(n!=0)
+		{
+			if(n>0)
+			{
+				System.out.println("It is a positive number");
+				System.exit(0);
+			}
+			
+			System.out.println("It is a negative number");
+		}
+	}
+}
+
+
+Q) Write a java program to calculate costs based on user input. The program should prompt users to enter the total weight of items (in kilograms) and the shipping destination (domestic or international). For domestic orders, the program should charge Rs.500 for weights up to 5 kg and Rs.100 per additional kg. For international orders, it should charge Rs.1000 for weights up to 5 kg, Rs.200 per additional kg, and an Rs.500 surcharge for weights exceeding 10 kg. Print calculated shipping cost.
+
+Input:
+	Total weight of items : 11
+	Shipping Destination : domestic 
+
+Output:
+	500(5kg)+600(6kg) = 1100(11kg)
+
+	1000(5kg) + 1200(6kg) + 500 = 2700
+
+
+import java.util.Scanner;
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		Scanner sc=new Scanner(System.in);
+		
+		System.out.println("Enter the total weight of items :");
+		int weight = sc.nextInt(); // 11
+		
+		System.out.println("Enter the shipping destination :");
+		String destination = sc.next().toLowerCase(); // domestic 
+		
+		int cost=0;
+		
+		if(destination.equals("domestic"))
+		{
+			if(weight<=5)
+			{
+				cost = 500;
+			}
+			else
+			{
+				cost = 500 + (weight-5)*100;	
+			}
+		}
+		else if(destination.equals("international"))
+		{
+			if(weight<=5)
+			{
+				cost = 1000;
+			}
+			else if(weight>5 && weight<=10)
+			{
+				cost = 1000 + (weight-5)*200;
+			}
+			else
+			{
+				cost = 1000 + (weight-5)*200 + 500;
+			}
+		}
+		
+		
+		System.out.println("Total Shipping Cost is ="+cost);
+	}
+}
+
+v) switch case 
+===============
+It is used to execute the source code based on multiple conditions.
+
+It is similar to if else if ladder.
+
+syntax:
+------
+	switch(expression)
+	{
+		case value1: //code to be execute 
+			     break stmt; 
+
+		case value2: //code to be execute 
+			     break stmt; 
+		-
+		-
+		default:   //code to be execute if all cases are false.
+	}
+
+ex:
+---
+import java.util.Scanner;
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		Scanner sc=new Scanner(System.in);
+		
+		System.out.println("Enter the option :");
+		int option = sc.nextInt(); // 108
+		
+		switch(option)
+		{
+			case 100: System.out.println("It is a police number");
+			          break;
+			case 103: System.out.println("It is a enquiry number");
+			          break;
+			case 108: System.out.println("It is a emergency number");
+			          break;
+			default:  System.out.println("Invalid option");
+		}
+	}
+}
+
+Declaration of break statement is optional in the switch case. If we won't declare break stmt then from where our condition is satisfied from there all cases will be executed that state is called fall through state of switch case.
+
+ex:
+---
+import java.util.Scanner;
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		Scanner sc=new Scanner(System.in);
+		
+		System.out.println("Enter the option :");
+		int option = sc.nextInt(); // 108
+		
+		switch(option)
+		{
+			case 100: System.out.println("It is a police number");
+			          //break;
+			case 103: System.out.println("It is a enquiry number");
+			          //break;
+			case 108: System.out.println("It is a emergency number");
+			          //break;
+			default:  System.out.println("Invalid option");
+		}
+	}
+}
+
+The allowed datatypes for switch are byte,short,int,char and string. If we take other datatypes we will get compile time error.
+
+
+Q)Write a java program to check given alphabet is a vowel or consonent?
+
+import java.util.Scanner;
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		Scanner sc=new Scanner(System.in);
+		
+		System.out.println("Enter the alphabet :");
+		char ch = sc.next().charAt(0);
+		
+		switch(ch)
+		{
+			case 'a': System.out.println("It is a vowel");
+			          break;
+			case 'e': System.out.println("It is a vowel");
+			          break;
+			case 'i': System.out.println("It is a vowel");
+			          break;
+			case 'o': System.out.println("It is a vowel");
+			          break;
+			case 'u': System.out.println("It is a vowel");
+			          break;
+			default:  System.out.println("It is a consonent");
+		}
+	}
+}
+
+ex:
+---
+import java.util.Scanner;
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		Scanner sc=new Scanner(System.in);
+		
+		System.out.println("Enter the String :");
+		String str = sc.next();
+		
+		switch(str)
+		{
+			case "one": System.out.println("January");
+			          break;
+			case "two": System.out.println("February");
+			          break;
+			case "three": System.out.println("March");
+			          break;
+			case "four": System.out.println("April");
+			          break;
+			case "five": System.out.println("May");
+			          break;
+			default:  System.out.println("Coming Soon..");
+		}
+	}
+}
+
+2) Iteration statement 
+======================
+It is used to execute the source code repeatedly.
+
+Iteration statement is possible by using loops.
+
+We have four types of loops.
+
+i) do while loop 
+
+ii) while loop
+
+iii) for loop
+
+iv) for each loop 
+
+i) do while loop 
+==================
+It executes the source code how long our condition is true.
+
+syntax:
+------
+	do
+	{
+		-
+		- //code to be execute 
+		-
+	}while(condition);
+
+ex:
+---
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		int i=1;
+		
+		do
+		{
+			System.out.print(i+" "); // infinite 1 
+		}
+		while (i<=10);
+	}
+}
+
+In do while loop, our code will execute atleast for one time either our condition is true or false.
+
+ex:
+---
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		int i=11;
+		
+		do
+		{
+			System.out.print(i+" "); //  11
+		}
+		while (i<=10);
+	}
+}
+
+Q) Write a java program to display 10 natural numbers?
+
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		int i=1;
+		do
+		{
+			System.out.print(i+" ");//1 2 3 4 5 6 7 8 9 10
+			
+			i++;
+		}
+		while (i<=10);
+	}
+}
+
+Q) Write a java program to perform sum of 10 natural numbers?
+
+
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		int i=1,sum=0;
+		do
+		{
+			sum=sum+i;
+			
+			i++;
+		}
+		while (i<=10);
+		
+		System.out.println(sum);
+	}
+}
+
+Assignment
+==========
+Q) Write a java program to display 10 natural numbers in descending order?
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

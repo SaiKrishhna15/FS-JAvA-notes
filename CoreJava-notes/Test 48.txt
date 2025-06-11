@@ -1,0 +1,54 @@
+1.Write a java program to count number of even and odd elements from given 
+array? 
+ 
+Input: 
+ 	3 4 7 9 2 6 1 
+ 
+Output: 
+ 	Even elements : 3 
+ 	Odd elements : 4
+
+2.Write a java program to display prime elements from given array? 
+ 
+ 
+Input: 
+	 5  9  3  11  15  7  14 
+ 
+Output: 
+	 5 3 11 7
+
+3. Write a java program to display array elements in descending order? 
+ 
+Input: 
+	 5  9  3  11  15  7  14 
+ 
+Output: 
+ 	15  14  11  9  7  5  3  
+
+
+4. Write a java program to display three highest elements from given array? 
+ 
+Input: 
+ 	7 2 4 9 1 6 3  
+ 
+Output: 
+ 	9 7 6 
+
+
+5. Write a java program to display unique elements from given array? 
+ 
+Input: 
+ 	3 6 1 2 3 9 4 4 7 6 10 
+ 
+Output: 
+	 1 2 9 7 10
+
+
+6. Write a java program to print the below patter ?
+
+		6
+	       6 5 
+	      6 5 4
+	     6 5 4 3 
+	    6 5 4 3 2
+           6 5 4 3 2 1

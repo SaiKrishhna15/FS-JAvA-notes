@@ -1,0 +1,219 @@
+Editplus Download 
+=================
+Download link : https://www.editplus.com/download.html
+
+
+Typescasting in java
+=====================
+The process of converting from one datatype to another datatype is called typecasting.
+
+In java, typecasting can be performed in two ways.
+
+1) Implicit typecasting 
+
+2) Explicit typecasting 
+
+
+1) Implicit typecasting 
+-------------------------
+If we want to store smaller value in a bigger variable then we need to use implicit typecasting.
+
+A compiler is responsible to perform implicit typecasting.
+
+There is no possibility to loss the information.
+
+It is also known as widening or upcasting.
+
+We can perform implicit typecasting as follow.
+
+ex:
+	byte	-->	short
+				-->	
+					int  --> long --> float --> double
+				-->
+			char
+
+ex:
+---
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		byte b=10;
+
+		int i=b;
+
+		System.out.println(i);//10
+	}
+}
+
+ex:
+---
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		char ch='a';
+
+		long l = ch;
+
+		System.out.println(l);//97
+	}
+}
+
+ex:
+---
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		int i=10;
+
+		float f = i;
+
+		System.out.println(f);//10.0
+	}
+}
+
+
+2) Explicit typecasting 
+------------------------
+If we want to store bigger value into a smaller variable then we need to use explicit typecasting.
+
+A programmer is responsible to perform explicit typecasting.
+
+There is a possibility to loss the information.
+
+It is also known as Narrowing or Downcasting.
+
+We can perform explicit typecasting as follow.
+
+ex:
+	byte	<--	short
+				<--	
+					int  <-- long <-- float <-- double
+				<--
+			char
+	
+ex:
+---
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		double d=10.45;
+
+		int i=(int)d;
+
+		System.out.println(i); // 10
+	}
+}
+
+
+ex:
+---
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		int i=65;
+
+		char ch=(char)i;
+
+		System.out.println(ch); //  A
+	}
+}
+
+ex:
+---
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		int i=130;
+
+		byte b=(byte)i;
+
+		System.out.println(b); // -126
+	}
+}
+
+
+Basic java programs 
+===================
+
+
+Q)
+There is one running race between different participants. So in that race two partner need to finish the race. There is four rounds of race in that each lane length is 100m.So in that one participant will cover 30% of the lane length and another partner will cover remaining length of lane. So print each participant covers distance in that race.
+
+Output:
+		First participant will cover 120 meters in a total race
+		Second participant will cover 280 meters in a total race
+
+
+class Test
+{
+	public static void main(String[] args) 
+	{
+		int lane=100;
+		int rounds=4;
+		int firstParticipant=30;
+
+		int firstPerson = lane * rounds * firstParticipant / 100;
+
+		int secondPerson = lane * rounds - firstParticipantPer;
+
+		System.out.println("First participant will cover "+firstPerson+" meters ");
+		System.out.println("Second participant will cover "+secondPerson+" meters ");
+	}
+}
+
+Q) Write a java program to convert time to seconds?
+
+input:
+	10  30  23
+
+output:
+	37823
+
+class Test
+{
+	public static void main(String[] args) 
+	{
+		int hours=10;
+		int minutes=30; 
+		int seconds=23;
+
+		int totalSeconds = (hours*3600)+(minutes*60)+seconds;
+
+		System.out.println(totalSeconds);
+	}
+}
+
+Q) Write a java program to convert seconds to time?
+
+input:
+	37823
+
+output:
+	10:30:23
+
+
+class Test
+{
+	public static void main(String[] args) 
+	{
+		int totalSeconds=37823;
+
+		int hours = totalSeconds / 3600;
+
+		int minutes = (totalSeconds % 3600) / 60;
+
+		int seconds = totalSeconds % 60;
+
+		System.out.println(hours+":"+minutes+":"+seconds);
+
+	}
+}
+
+

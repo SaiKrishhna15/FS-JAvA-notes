@@ -1,0 +1,342 @@
+Q) Write a java program to encode the string?
+
+input:
+	1106
+
+output:
+	AAJF
+
+ex:
+---
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		String str="1106";
+		
+		for(int i=0;i<str.length();i++)
+		{
+			int n = Character.getNumericValue(str.charAt(i));
+			
+			if(n>0)
+			{
+				System.out.print((char)('A'+n-1));
+			}
+			else
+			{
+				int k = Integer.parseInt(str.substring(i-1,i+1));
+				System.out.print((char)('A'+k-1));
+			}
+		}
+	}
+}
+
+
+
+Q) Write a java program to replace the string ?
+
+input:
+	s = "abababa", s1="aba", s2="a"
+
+output:
+	aba 
+
+ex:
+---
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		String s = "abababa", s1="aba", s2="a";
+		
+		s = s.replace(s1,s2);
+		
+		System.out.println(s); 
+
+	}
+}
+
+Q) Write a java program to decode the string?
+
+input:
+	AAJF
+
+output:
+	1106
+
+
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		String str="AAJF";
+		
+		for(int i=0;i<str.length();i++)
+		{
+			char ch = str.charAt(i);
+			
+			int n = ch - 'A' + 1;
+			
+			if(String.valueOf(n).contains("0"))
+			{
+				System.out.print(n%10);
+			}
+			else
+			{
+				System.out.print(n);
+			}
+		}
+
+	}
+}
+
+Q) Write a java program to check given string is Anagram or not?
+
+input:
+	silent 
+	listen 
+
+output:
+	It is a Anagram string 
+
+
+import java.util.Arrays;
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		String str1="silent";
+		String str2="listen";
+		
+		char[] carr1 = str1.toCharArray();
+		char[] carr2 = str2.toCharArray();
+		
+		Arrays.sort(carr1); // e i l n s t 
+		Arrays.sort(carr2); // e i l n s t 
+		
+		if(carr1.length!=carr2.length)
+		{
+			System.out.println("It is not a Anagram string");
+		}
+		else
+		{
+			boolean flag=true;
+			for(int i=0;i<carr1.length && i<carr2.length;i++)
+			{
+				if(carr1[i]!=carr2[i])
+				{
+					flag=false;
+					break;
+				}
+			}
+			if(flag)
+				System.out.println("It is a Anagram string");
+			else
+				System.out.println("It is not a Anagram string");
+		}
+	}
+}
+
+
+Q) Jack's father purchased a new laptop for his office work.Jack started learning how to create words with letters.Jack father want to write a program in his laptop to find the longest word created by his child.
+
+input:
+	ball  apple  car  elephant  banana 
+
+output:
+	elephant 
+
+
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		String str="ball apple car elephant banana";
+		
+		String[] sarr = str.split(" ");
+		
+		int len = sarr[0].length();
+		String word="";
+		
+		//for each loop
+		for(String s:sarr)
+		{
+			if(s.length() > len)
+			{
+				len = s.length();
+				word=s;
+			}
+		}
+		
+		System.out.println(word);
+	}
+}
+
+
+Q) Write a java program to display duplicate and unique characters from given string?
+
+input:
+	messisseppi 
+
+output:
+	duplicate characters :  sepi
+	unique characters : mesip
+
+ex:
+---
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		String str="messisseppi";
+		
+		String duplicates="";
+		String uniques="";
+		
+		for(int i=0;i<str.length();i++)
+		{
+			String current = Character.toString(str.charAt(i));
+			
+			if(uniques.contains(current))
+			{
+				if(!duplicates.contains(current))
+				{
+					duplicates+=current;
+					continue;
+				}
+				else
+				{
+					continue;
+				}
+			}
+			uniques+=current;
+		}
+		
+		System.out.println("duplicates characters:"+duplicates);
+		System.out.println("unique characters:"+uniques);
+		
+	}
+}
+
+
+Q) Write a java program to display most repeating character from given string?
+
+input:
+	ihubtalentinstitute 
+
+output:
+	t is repeating for 5 times 
+
+ex:
+--
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		String str="ihubtalentinstitute";
+		
+		char ch=' ';
+		int maxCount=0;
+		
+		for(int i=0;i<str.length();i++)
+		{
+			int cnt=0;
+			
+			for(int j=0;j<str.length();j++)
+			{
+				if(str.charAt(i) == str.charAt(j))
+				{
+					cnt++;		
+				}
+			}
+			if(cnt>maxCount)
+			{
+				maxCount=cnt;
+				ch=str.charAt(i);
+			}
+		}
+		System.out.println(ch+" is repeating for "+maxCount+" times");
+	}
+}
+
+Q) Write a java program to display permutation of given string?
+
+input:
+	ABC
+
+output:
+	ABC
+	ACB 
+	BAC
+	BCA 
+	CBA
+	CAB 
+
+
+
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		String str="ABC";
+		
+		permutation(str.toCharArray(),0);
+	}
+	
+	//callie method 
+	public static void permutation(char[] arr,int fi)
+	{
+		if(fi==arr.length-1)
+		{
+			System.out.println(arr);
+			return;
+		}
+		
+		for(int i=fi;i<arr.length;i++)
+		{
+			swapping(arr,fi,i);
+			permutation(arr,fi+1);
+			swapping(arr,fi,i);
+		}
+	}
+	
+	//callie method 
+	public static void swapping(char[] arr,int fi,int i)
+	{
+		char temp=arr[fi];
+		arr[fi]=arr[i];
+		arr[i]=temp;
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

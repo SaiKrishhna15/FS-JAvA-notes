@@ -1,0 +1,443 @@
+Q) Write a java program to display highest element from given array?
+
+input:
+	8 2 9 1 7 5 
+
+output:
+	9
+
+class  Test
+{
+	public static void main(String[] args) 
+	{
+		int[] arr = {8,2,9,1,7,5};
+		
+		int big = arr[0];
+		
+		for(int i:arr)
+		{
+			if(i>big)
+			{
+				big = i;
+			}
+		}
+		System.out.println(big);
+	}
+}
+
+Q) Write a java program to display least element from given array?
+
+input:
+	8 2 9 1 7 5 
+
+output:
+	1
+
+
+class  Test
+{
+	public static void main(String[] args) 
+	{
+		int[] arr = {8,2,9,1,7,5};
+		
+		int small = arr[0];
+		
+		for(int i:arr)
+		{
+			if(i<small)
+			{
+				small = i;
+			}
+		}
+		System.out.println(small);
+	}
+}
+
+Q) Write a java program to display three highest elements from given array?
+
+input:
+	6 1 9 4 7 2 8 3  
+
+output:
+	9 8 7 
+
+
+class  Test
+{
+	public static void main(String[] args) 
+	{
+		int[] arr = {6,1,9,4,7,2,8,3};
+		
+		int firstElement=Integer.MIN_VALUE;
+		int secondElement=Integer.MIN_VALUE;
+		int thirdElement=Integer.MIN_VALUE;
+		
+		for(int i:arr)
+		{
+			if(i>firstElement)
+			{
+				thirdElement = secondElement;
+				secondElement = firstElement;
+				firstElement = i;
+			}
+			else if(i>secondElement)
+			{
+				thirdElement=secondElement;
+				secondElement=i;
+			}
+			else if(i>thirdElement)
+			{
+				thirdElement=i;
+			}
+		}
+		
+		System.out.println(firstElement+" "+secondElement+" "+thirdElement);
+	}
+}
+
+Q) Write a java program to seggregate array elements?
+
+input:
+	1 0 1 1 0 0 1 0 1 0
+
+output:
+	0 0 0 0 0 1 1 1 1 1 
+
+ex:
+---
+class  Test
+{
+	public static void main(String[] args) 
+	{
+		int[] arr = {1,0,1,1,0,0,1,0,1,0};
+		
+		int index = 0;
+		
+		//seggregate logic
+		for(int i=0;i<arr.length;i++)
+		{
+			if(arr[i]==0)
+			{
+				int temp=arr[i];
+				arr[i]=arr[index];
+				arr[index]=temp;
+				
+				index++;
+			}
+		}
+		//display 
+		for(int i:arr)
+		{
+			System.out.print(i+" ");
+		}
+	}
+}
+
+Q) Write a java program to display duplicate elements from given array?
+
+input:
+	2 6 2 9 7 5 7 4 3 5 
+
+output:
+	2 7 5 
+
+
+class  Test
+{
+	public static void main(String[] args) 
+	{
+		int[] arr = {2,6,2,9,7,5,7,4,3,5};
+		
+		for(int i=0;i<arr.length;i++)
+		{
+			for(int j=i+1;j<arr.length;j++)
+			{
+				if(arr[i]==arr[j])
+				{
+					System.out.print(arr[i]+" ");
+				}
+			}
+		}
+	}
+}
+
+Q) Write a java program to display unique elements from given array?
+
+input:
+	2 6 2 9 7 5 7 4 3 5 
+
+output:
+	6 9 4 3 
+
+
+class  Test
+{
+	public static void main(String[] args) 
+	{
+		int[] arr = {2,6,2,9,7,5,7,4,3,5};
+		
+		for(int i=0;i<arr.length;i++)
+		{
+			int cnt=0;
+			
+			for(int j=0;j<arr.length;j++)
+			{
+				if(arr[i]==arr[j])
+				{
+					cnt++;
+				}
+			}
+			if(cnt==1)
+				System.out.print(arr[i]+" ");
+		}
+	}
+}
+
+Q) Write a java program to find out most repeating element from given array?
+
+input:
+	2 6 3 3 7 2 3 9 3 5 6 2 3
+
+output:
+	3 repeating for 5 times 	 
+
+
+class  Test
+{
+	public static void main(String[] args) 
+	{
+		int[] arr = {2,6,3,3,7,2,3,9,3,5,6,2,3};
+		
+		int element=0;
+		int maxCount=0;
+		
+		for(int i=0;i<arr.length;i++)
+		{
+			int cnt=0;
+			
+			for(int j=0;j<arr.length;j++)
+			{
+				if(arr[i]==arr[j])
+				{
+					cnt++;
+				}
+			}
+			if(cnt>maxCount)
+			{
+				maxCount=cnt;
+				element =arr[i];
+			}
+		}
+		System.out.println(element+" is repeating for "+maxCount+" times");
+	}
+}
+
+
+Q) Write a java program to display pair of elements equals to given sum?
+
+input:
+	arr = 5 9 1 7 4 6 2 8 
+	sum = 10
+
+output:
+	9 1 	
+	4 6
+	2 8  
+
+
+class  Test
+{
+	public static void main(String[] args) 
+	{
+		int[] arr = {5,9,1,7,4,6,2,8};
+		int sum=10;
+		
+		for(int i=0;i<arr.length;i++)
+		{
+			for(int j=i+1;j<arr.length;j++)
+			{
+				if(arr[i]+arr[j]==sum)
+				{
+					System.out.println(arr[i]+" "+arr[j]);
+				}
+			}
+		}
+	}
+}
+
+
+Q) Write a java program to display triplet of elements equals to given sum?
+
+input:
+	arr = 5 9 1 7 4 6 2 8 
+	sum = 10
+
+output:
+	5 1 4
+	1 7 2
+
+ex:
+class  Test
+{
+	public static void main(String[] args) 
+	{
+		int[] arr = {5,9,1,7,4,6,2,8};
+		int sum=10;
+		
+		for(int i=0;i<arr.length;i++)
+		{
+			for(int j=i+1;j<arr.length;j++)
+			{
+				for(int k=j+1;k<arr.length;k++)
+				{
+					if(arr[i]+arr[j]+arr[k]==sum)
+					{
+						System.out.println(arr[i]+" "+arr[j]+" "+arr[k]);
+					}
+				}
+			}
+		}
+	}
+}
+
+Q) Write a java program to display leader elements from given array?
+
+input:
+	3 7 34 5 12 2 9 
+
+output:
+	9 12 34 
+
+class  Test
+{
+	public static void main(String[] args) 
+	{
+		int[] arr = {3,7,34,5,12,2,9};
+		
+		int max = arr[arr.length-1];
+		
+		System.out.print(max+" ");
+		
+		for(int i=arr.length-2;i>=0;i--)
+		{
+			if(arr[i]>max)
+			{
+				max=arr[i];
+				System.out.print(max+" ");
+			}
+		}
+	}
+}
+
+Q) Write a java program to find out missing element from given array?
+
+input:
+	7 1 6 2 5 3 
+
+output:
+	4
+
+
+class  Test
+{
+	public static void main(String[] args) 
+	{
+		int[] arr = {7,1,6,2,5,3};
+		
+		int sum_of_ele = arr.length+1;
+		
+		int sum = (sum_of_ele * (sum_of_ele + 1))/2;
+		
+		for(int i:arr)
+		{
+			sum=sum-i;
+		}
+		
+		System.out.println(sum);
+	}
+}
+
+
+Q) Write a java program to merge two arrays and display them in a sorting order?
+
+input:
+	5 1 3 4 2 
+	9 7 6 8 10
+
+output:
+	1 2 3 4 5 6 7 8 9 10
+
+
+import java.util.Arrays;
+class  Test
+{
+	public static void main(String[] args) 
+	{
+		int[] arr1={5,1,3,4,2}; 
+		int[] arr2={9,7,6,8,10};
+		
+		int size1 = arr1.length;
+		int size2 = arr2.length;
+		
+		arr1 = Arrays.copyOf(arr1,size1+size2);
+		
+		int j=0;
+		for(int i=size1;i<arr1.length;i++)
+		{
+			arr1[i]=arr2[j++];
+		}
+		
+		Arrays.sort(arr1);
+		
+		//display 
+		for(int i:arr1)
+		{
+			System.out.print(i+" ");
+		}
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Q) Write a java program to identify and print all elements in an array that are greater
+than both their immediate predecessors and successors, considering the first and
+last elements as having only one neighbor?
+
+Input:
+	1 3 20 4 75 0 90
+Output:
+	20 75 90
+
+
+
+
+
+
+Q) Write a java program to determine the smallest number of coins needed to total 
+86 rupees. Use the denominations provided in the array {1,2,5,10}? 
+ 
+Output: 
+ 	1 coin(s) of 1 rupee(s) 
+ 	1 coin(s) of 5 rupee(s) 
+ 	8 coin(s) of 10 rupee(s)
+
+

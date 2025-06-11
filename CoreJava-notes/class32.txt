@@ -1,0 +1,546 @@
+Method overloading 
+===================
+Having same method name with different parameters/signatures in a single class is called method overloading.
+
+Method overloading will reduce complexity of the programming.
+
+Methods that are present in a class are called overloaded methods.
+
+ex:
+---
+class MeeSeva 
+{
+	//overloaded methods 
+	public void search(int voterId)
+	{
+		System.out.println("Details Found via voterId");
+	}
+	public void search(String houseNo)
+	{
+		System.out.println("Details Found via houseNo");
+	}
+	public void search(long aadharNo)
+	{
+		System.out.println("Details Found via aadharNo");
+	}
+}
+class Test 
+{
+	public static void main(String[] args)
+	{
+		MeeSeva ms=new MeeSeva();
+		ms.search(101);
+		ms.search("1-5-76/1/A");
+		ms.search(1234L);
+	}
+}
+
+Q) Can we overload main method in java?
+
+Yes, we can overload main method in java but JVM always execute main method with String[] argument.
+
+
+ex:
+
+class Test 
+{
+	public static void main(int[] iargs)
+	{
+		System.out.println("int arg");
+	}
+	
+	public static void main(String[] args)
+	{
+		System.out.println("string arg");
+	}
+}
+
+Method overriding 
+==================
+Having same method name with same parameters/signatures in two different classes is called method overriding.
+
+Methods which are present in parent class are called overridden methods.
+
+Methods which are present in child class are called overriding methods.
+
+ex:
+---
+class Parent 
+{
+	//overridden methods 
+	public void property()
+	{
+		System.out.println("House+Land+Gold");
+	}
+	public void marry()
+	{
+		System.out.println("Rashmika");
+	}
+}
+class Child extends Parent 
+{
+	//overridding methods 
+	@Override 
+	public void marry()
+	{
+		System.out.println("Trisha");
+	}
+}
+class Test 
+{
+	public static void main(String[] args)
+	{
+		Parent p = new Parent();
+		p.property(); // House+Land+Gold
+		p.marry(); // Rashmika 
+		
+		Child c= new Child();
+		c.property(); // House+Land+Gold
+		c.marry(); // Trisha 
+		
+		Parent p1=new Child();
+		p1.property(); // House+Land+Gold
+		p1.marry(); // Trisha 
+	}
+}
+
+If we declare any method as final then overriding is not possible.
+
+ex:
+---
+class Parent 
+{
+	public final void property()
+	{
+		System.out.println("House-Not For Sale");
+	}
+}
+class Child extends Parent 
+{
+	@Override 
+	public void property()
+	{
+		System.out.println("House-For Sale");
+	}
+}
+class Test 
+{
+	public static void main(String[] args)
+	{
+		Parent p =new Parent();
+		p.property();
+		
+		Child c=new Child();
+		c.property();
+	}
+}
+
+o/p:
+	C.T.E :  overridden method is final
+
+
+Method hiding 
+=============
+Method hiding is exactly same as method overriding with folowing differences.
+
+Method overriding 					Method hiding 
+-------------------					-----------------
+All methods must be non-static.				All methods must be static.
+
+Method resolution will taken care by a JVM 		Method resolution will taken care by a 	
+based on runtime object.				compiler based on reference type.
+
+It is also known as runtime polymorphism, dynamic 	It is also known as compile time polymorphism,
+polymorphism or late binding.				static polymorphism or early binding.
+
+ex:
+class Parent 
+{
+	public static void property()
+	{
+		System.out.println("House+Land+Gold");
+	}
+	public static void marry()
+	{
+		System.out.println("Rashmika");
+	}
+}
+class Child extends Parent 
+{
+	public static void marry()
+	{
+		System.out.println("Trisha");
+	}
+}
+class Test 
+{
+	public static void main(String[] args)
+	{
+		Parent p = new Parent();
+		p.property(); // House+Land+Gold
+		p.marry(); // Rashmika 
+		
+		Child c= new Child();
+		c.property(); // House+Land+Gold
+		c.marry(); // Trisha 
+		
+		Parent p1=new Child();
+		p1.property(); // House+Land+Gold
+		p1.marry(); // Rashmika
+	}
+}
+
+
+Q) Can we override main method in java?
+
+No , we can't override main method in java because it is static.
+
+
+Polymorphism 
+=============
+Polymorphism has taken from Greek Word.
+
+Here poly means many and morphism means forms.
+
+The ability to represent in different forms is called polymorphism.
+
+The main objective of polymorphism is to provide flexibility.
+
+Diagram: class32.1
+
+In java polymorhpism is divided into two types.
+
+1) Compile time polymorphism 
+---------------------------
+A polymorphism which exhibits at compile time is called compile time polymorphism.
+ex:
+	Method overloading 
+	Method hiding 
+
+2) Runtime polymorphism 
+-------------------------
+A polymorphism which exhibits at runtime is called runtime polymorphism.
+ex:
+	Method overriding 
+
+
+Diagram: class32.2
+
+
+Constructors 
+=============
+Constructor is a special method which is used to initialized an object.
+
+Constructor will execute when memory is allocated for an object.
+
+Having same name as class name is called constructor.
+
+Constructor will execute when we create an object.
+
+Constructor does not allow return type.
+
+Constructor will accept following modifiers.
+ex:
+	default 
+	public 
+	private 
+	protected 
+
+In java , constructors are divided into two types.
+
+1) Userdefined constructor
+
+2) Default constructor 
+
+1) Userdefined constructor
+--------------------------
+If a constructor is created by the user based on the application requirement is called user defined construtor.
+
+It is classified into two types.
+
+i) Zero-argument constructor 
+
+ii) Parameterized constructor 
+
+i) Zero-argument constructor 
+----------------------------
+Suppose if we are not passing any argument to userdefined constructor then that constructor is called zero-argument constructor.
+
+ex:
+--
+
+class Test 
+{
+	Test()
+	{
+		System.out.println("constructor");
+	}
+	public static void main(String[] args)
+	{
+		System.out.println("main-method");
+	}
+}
+o/p:
+	main-method 
+
+ex:
+---
+
+class Test 
+{
+	public Test()
+	{
+		System.out.println("constructor");
+	}
+	public static void main(String[] args)
+	{
+		System.out.println("main-method");
+		Test t=new Test();
+	}
+}
+o/p:
+	main-method
+	constructor 
+
+ex:
+---
+
+class Test 
+{
+	protected Test()
+	{
+		System.out.println("constructor");
+	}
+	public static void main(String[] args)
+	{
+		Test t1=new Test();
+		System.out.println("main-method");
+		Test t2=new Test();
+	}
+}
+o/p:
+	constructor
+	main-method
+	constructor
+
+ex:
+---
+
+class Test 
+{
+	private Test()
+	{
+		System.out.println("constructor");
+	}
+	public static void main(String[] args)
+	{
+		Test t1=new Test();
+		System.out.println("main-method");
+		Test t2=new Test();
+	}
+}
+o/p:
+	constructor
+	main-method
+	constructor
+
+ii) Parameterized constructor
+---------------------------
+Suppose if we are passing atleast one argument to userdefined constructor then that constructor is called parameterized constructor.
+
+ex:
+---
+class Employee 
+{
+	//current class variable 
+	private int empId;
+	private String empName;
+	private double empSal;
+	
+	//parameterized constructor 
+	Employee(int empId,String empName,double empSal)
+	{
+		this.empId=empId;
+		this.empName=empName;
+		this.empSal=empSal;
+	}
+	
+	//display the data 
+	public void getEmployeeDetails()
+	{
+			System.out.println("Employee Id :"+empId);
+			System.out.println("Employee Name :"+empName);
+			System.out.println("Employee Salary :"+empSal);
+	}
+	
+	@Override
+	public String toString()
+	{
+		return empId+" "+empName+" "+empSal;
+	}
+}
+class Test 
+{
+	public static void main(String[] args)
+	{
+		Employee e = new Employee(101,"Alan",1000d);
+		
+		System.out.println(e); 
+		
+		e.getEmployeeDetails();
+	}
+}
+
+
+
+2) Default constructor 
+-----------------------
+It is a compiler generated constructor for every java program where we are not defining atleast zero argument constructor.
+
+To see the default constructor we need to use below command.
+ex:
+	javap  -c  Test 
+
+Diagram: class32.3
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

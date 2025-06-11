@@ -1,0 +1,404 @@
+Q) Write a java program to convert lowercase to uppercase and vice versa?
+
+input:
+	IhuBTalEnT 
+
+output:
+	iHUbtALeNt 
+
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		String str="IhuBTalEnT";
+		
+		char[] carr = str.toCharArray();
+		
+		for(int i=0;i<carr.length;i++)
+		{
+			if(carr[i]>='A' && carr[i]<='Z')
+				carr[i]=(char)(carr[i]+32);
+			
+			else if(carr[i]>='a' && carr[i]<='z')
+				carr[i]=(char)(carr[i]-32);
+		}
+		
+		//for each loop
+		for(char i:carr)
+		{
+			System.out.print(i);
+		}
+	}
+}
+
+Q) Write a java program to display the string in a given format?
+
+input:
+	XYZ
+
+output:
+	XY
+	XZ
+	YX
+	YZ
+	ZX
+	ZY 
+
+ex:
+---
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		String str="XYZ";
+		
+		for(int i=0;i<str.length();i++)
+		{
+			for(int j=0;j<str.length();j++)
+			{
+				if(i!=j)
+				{
+					System.out.println(str.charAt(i)+""+str.charAt(j));
+				}
+			}
+		}
+	}
+}
+
+Q) Write a java program to count number of digits, perform sum of digits and check that number is even or odd?
+
+input:
+	NEX123
+
+output:
+	Number of Digits : 3 
+	Sum of Digits    : 6
+	It is even number 
+
+
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		String str="NEX123";
+		
+		str = str.replaceAll("[^0-9]","");
+		
+		System.out.println("No of Digits : "+str.length());
+		
+		int sum=0;
+		for(int i=0;i<str.length();i++)
+		{
+			int n = Character.getNumericValue(str.charAt(i));
+			sum+=n;
+		}
+		System.out.println("Sum of Digits : "+sum);
+		
+		if(sum%2==0)
+			System.out.println("It is even number");
+		else
+			System.out.println("It is odd number");
+	}
+}
+
+
+Q) Write a java program to display reverse of a given string?
+
+input:
+	hello 
+
+output:
+	olleh 
+
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		String str="hello";
+		
+		String rev="";
+		
+		//reading reverse 
+		for(int i=str.length()-1;i>=0;i--)
+		{
+			rev+=str.charAt(i);
+		}
+		
+		System.out.println(rev);
+	}
+}
+
+Q) Write a java program to check given string is palindrome or not?
+
+input:
+	racar 
+
+output:
+	It is a palindrome string 
+
+ex:
+---
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		String str="racar";
+		
+		String rev="";
+		
+		//reading reverse 
+		for(int i=str.length()-1;i>=0;i--)
+		{
+			rev+=str.charAt(i);
+		}
+		
+		if(str.equals(rev))
+			System.out.println("It is a palindrome string");
+		else
+			System.out.println("It is not a palindrome string");
+			
+	}
+}
+
+
+Q) Write a java program to sort the string?
+
+input:
+	dcbae
+
+output:
+	abcde 
+
+
+import java.util.Arrays;
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		String str="dcbae";
+		
+		char[] carr = str.toCharArray();
+		
+		Arrays.sort(carr);
+		
+		str="";
+		
+		for(char ch:carr)
+		{
+			str+=ch;
+		}
+		System.out.println(str);
+	}
+}
+
+
+Q) Write a java program to display reverse of a sentence?
+
+input:
+	This is java class 
+
+output:
+	class java is This 
+
+
+
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		String str="This is java class";
+		
+		String[] sarr = str.split(" ");  
+		
+		//reading reverse 
+		for(int i=sarr.length-1;i>=0;i--)
+		{
+			System.out.print(sarr[i]+" ");
+		}
+	}
+}
+
+
+Q) Write a java program to display reverse of word in a given sentence?
+
+input:
+	This is java class 
+
+output:
+	sihT si avaj ssalc 
+
+
+
+
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		String str="This is java class";
+		
+		String[] sarr = str.split(" ");  
+		
+		//for each loop
+		for(String s : sarr)
+		{
+			//display reverse 
+			for(int i=s.length()-1;i>=0;i--)
+			{
+				System.out.print(s.charAt(i));
+			}
+			//add space
+			System.out.print(" ");
+		}
+	}
+}
+
+
+Q) Write a java program to display the string in a given format?
+
+Input:
+	A1B2C3D4
+
+output:
+	ABBCCCDDDD
+
+ex:
+---
+
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		String str="A1B2C3D4";
+		
+		for(int i=0;i<str.length();i++)
+		{
+			char ch = str.charAt(i);
+			
+			if(Character.isAlphabetic(ch))
+			{
+				System.out.print(ch);
+			}
+			else
+			{
+				int n = Character.getNumericValue(ch);
+				
+				for(int k=1;k<n;k++)
+				{
+					System.out.print(str.charAt(i-1));
+				}
+			}
+		}
+	}
+}
+
+Q) Write a java program to display the palindrome string?
+
+input:
+	madam is racar for students
+
+output:
+	madam racar 
+
+ex:
+---
+
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		String str="madam is racar for students";
+		
+		String[] sarr = str.split(" ");
+		
+		for(String s : sarr)
+		{
+			//reverse logic 
+			String rev="";
+			for(int i=s.length()-1;i>=0;i--)
+			{
+				rev+=s.charAt(i);
+			}
+			
+			if(s.equals(rev))
+				System.out.print(s+" ");
+				
+		}
+	}
+}
+
+Q) Write a java program to display the string starting with uppercase letter?
+
+input:
+	This is Java class For students
+
+output:
+	This Java For 
+
+ex:
+---
+
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		String str="This is Java class For students";
+		
+		String[] sarr = str.split(" ");
+		
+		for(String s : sarr)
+		{
+			if(s.charAt(0)>='A' && s.charAt(0)<='Z')
+				System.out.print(s+" ");
+		}
+	}
+}
+
+Assignment 
+============
+Q) Write a java program to display number of uppercase letters, lowercase letters, digits, words and spaces?
+
+input:
+	This Is Java Class37
+
+output:
+	uppercase : 4
+	lowercase : 11
+	digits	  : 2 
+	words     : 4 
+	spaces    : 3  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

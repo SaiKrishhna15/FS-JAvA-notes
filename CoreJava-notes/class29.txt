@@ -1,0 +1,393 @@
+Q) Write a java program to transpose a matrix?
+
+input:
+	1 2 3	
+	4 5 6
+	7 8 9
+
+output:
+	1 4 7
+	2 5 8
+	3 6 9
+
+
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		int[][] matrix={
+							{1,2,3},	
+							{4,5,6},
+							{7,8,9}
+						};
+						
+		int rows = matrix.length;
+		int cols = matrix[0].length;
+		
+		int[][] transpose=new int[rows][cols];
+		
+		for(int i=0;i<rows;i++)
+		{
+			for(int j=0;j<cols;j++)
+			{
+				transpose[j][i]= matrix[i][j];
+			}
+		}
+		
+		//display
+		for(int i=0;i<rows;i++)
+		{
+			for(int j=0;j<cols;j++)
+			{
+				System.out.print(transpose[i][j]+" ");
+			}
+			//new line 
+			System.out.println();
+		}
+		
+	}
+}
+
+Jagged Array 
+=============
+Jagged array is also known an array of arrays.
+
+It is a multi dimensional array where each row contains different column size.
+
+ex:
+---
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		int[][] matrix={
+							{1,2,3,4},	
+							{5,6},
+							{7,8,9}
+						};
+						
+		for(int i=0;i<matrix.length;i++)
+		{
+			for(int j=0;j<matrix[i].length;j++)
+			{
+				System.out.print(matrix[i][j]+" ");
+			}
+			//new line 
+			System.out.println();
+		}
+	}
+}
+
+3) Multi Dimensional Array 
+==========================
+If array contains more then two dimensions is called multi dimensional array.
+
+We can declare or create multi dimensional array as follow.
+ex:
+	int[][][] arr = new int[2][3][3];
+
+	Here we can store 18 elements.
+
+We can initialized multi dimensional array as follow.
+ex:
+	int[][][] arr = {
+				{
+					{1,2,3},
+					{4,5,6},
+					{7,8,9}
+				}
+				,
+				{
+					{1,2,3},
+					{4,5,6},
+					{7,8,9}
+
+				}
+			};
+
+
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		int[][][] arr = {
+							{
+								{1,2,3},
+								{4,5,6},
+								{7,8,9}
+							}
+							,
+							{
+								{1,2,3},
+								{4,5,6},
+								{7,8,9}
+							}
+						};
+						
+		for(int i=0;i<arr.length;i++)
+		{
+			for(int j=0;j<arr[i].length;j++)
+			{
+				for(int k=0;k<arr[i][j].length;k++)
+				{
+					System.out.print(arr[i][j][k]+" ");
+				}
+			}
+			//new line 
+			System.out.println();
+		}
+		
+		
+	}
+}
+
+Anonymous Array 
+================
+Sometimes we will declare an array without name such type of nameless array is called anonymous array.
+
+The main objective of anonymous array is just for instance use.
+
+We can declare anonymous array as follow.
+
+ex:
+
+	new int[]{10,20,30};
+	new int[][]{{1,2,3},{4,5,6}};
+
+
+Q) Write a java program to perform sum of array elements?
+
+Input:
+	6 9 1 4 7 2 
+
+Output:
+	29
+
+class Test  
+{
+	public static void main(String[] args) 
+	{	
+		//caller 
+		int k = sum(new int[]{6,9,1,4,7,2});
+		System.out.println("Sum of array elements is ="+k);
+	}
+	//callie 
+	public static int sum(int[] arr)
+	{
+		int sum=0;
+		for(int i:arr)
+		{
+			sum+=i;
+		}
+		return sum;
+	}
+}
+
+
+OOPS 
+=====
+OOPS stands for Object Oriented Programming System/Structure.
+
+OOPS allow us to deal with real world entities using programming language.
+
+A language is said to be object oriented if it supports following features.
+
+ex:
+	class 
+	object 
+	Abstraction 
+	Encapsulation 
+	Inheritance and 
+	Polymorphism 
+
+
+class 
+=======
+A class is a blue print of an object.
+
+A class is a collection of objects.
+
+A class is a logical enitity.
+
+A class will accept following modifiers.
+ex:
+	default 
+	public 
+	final 
+	abstract 
+
+We can declare a class as follow.
+syntax:
+-----
+	optional 
+	|
+	modifier class <class_name> extends <parent_classname>
+			            implements <interface_name>
+	{
+		-
+		-
+		-	
+	}	
+
+
+Q) What is the difference between default and public class?
+
+default class					public class
+------------					---------------
+To declare a default class we should not	To declare a public class we should use 	
+use any keyword/modifier.			public keyword/modifier.
+ex:						ex:
+	class Test					public class Test 
+	{						{
+		-						-
+	}						}
+
+If we declare any class as default then we can	If we declare any class as public then we can 
+access that class within the package.		access that class within the package and outside 
+						the package.
+
+
+
+Q) What is the difference between final and abstract class?
+
+final 						abstract 
+--------					----------
+To declare a final class we will use final 	To declare a abstract class we will use abstract
+keyword/modifier.				keyword/modifier.
+
+ex:						ex:
+	final class Test 				abstract class Test
+	{						{
+		-						-
+	}						}
+
+Child creation is not possible.			Child creation is possible.
+
+Object creation is possible.			Object creation is not possible.
+
+
+object
+========
+It is a outcome of a blue print.
+
+It is a instance of a class. Here instance means allocating memory for our data members.
+
+It is a collection of properties and behaviours.
+
+ex:
+		Dog(object)
+			|
+	|------------------------------------|
+Properites				Behaviours
+
+Name					Barking
+Age					Eating 
+Breed					Sleeping 
+Color					and etc.
+Height
+Weight 
+and etc.			
+
+It is a physical entity.
+
+It is possible to create more then one object in a single class.
+
+We can create object as follow.
+
+syntax:
+------
+	<class_name> <reference_variable> = new constructor();
+ex:
+	Test  t = new Test();
+
+ex:
+---
+class Test  
+{
+	public static void main(String[] args) 
+	{	
+		Test t1=new Test();
+		Test t2=new Test();
+		Test t3=new Test();
+		
+		System.out.println(t1.hashCode());
+		System.out.println(t2.hashCode());
+		System.out.println(t3.hashCode());
+		
+		System.out.println(t1); // Test@Hexadecimal 
+		System.out.println(t2.toString());
+		System.out.println(t3.toString());
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

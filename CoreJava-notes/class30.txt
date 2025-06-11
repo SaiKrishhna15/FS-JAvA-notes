@@ -1,0 +1,380 @@
+Q) What is hashcode in java?
+
+In java, for every object JVM will create a unique identification number i.e hash code.
+
+In order to read hash code of an object we need to use hashCode() method.
+
+A hashCode() method present in Object class.
+
+Diagram: class30.1
+
+
+
+
+
+Q) What is toString() method?
+
+A toString() method present in Object class.
+
+Whenever we are trying to display any object reference directly or indirectly toString() method will execute.
+
+ex:
+---
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		int[] arr=new int[3];
+		
+		System.out.println(arr); // I[@Hexadecimal
+		
+		System.out.println(arr.toString()); // I[@Hexadecimal
+	}
+}
+
+ex:
+----
+class Test  
+{
+	//instance variables 
+	int i=10,j=20;
+
+	@Override
+	public String toString()
+	{
+		return i+" and "+j;
+	}
+	
+	public static void main(String[] args) 
+	{
+		Test t=new Test();
+		
+		System.out.println(t);
+	}
+	
+	
+}
+
+Q) What is the difference between class and object?
+
+class						object 
+--------------					-------------
+To declare a class we will use class keyword.	To declare an object we will use new keyword.
+
+It is a blue print of an object.		It is a outcome of a blue print.
+
+It is a collection of objects.			It is a collection of properties and behaviours.
+
+It is a logical entity.				It is a physical entity.
+
+It can't be modified.				It can be modified.
+
+It can't be redeclared.				It can be declare multiple times.		
+
+
+Object class
+=============
+It is present in java.lang package.
+
+It is a parent class for every java class.
+
+It contains following methods.
+
+ex:
+	cmd> javap  java.lang.Object
+
+	ex:
+		hashCode()
+		toString()
+		getClass()
+		notify()
+		notifyAll()
+		wait()
+		and etc.
+
+Data Hiding 
+===========
+The process of hiding object data from unauthorized access is called data hiding.
+
+Using private modifier we can achieve data hiding concept.
+
+The main objective of data hiding is to provide security.
+
+ex:
+---
+class Account 
+{
+	private double balance=5000;
+}
+class Student 
+{
+	public static void main(String[] args)
+	{
+		Account acc=new Account();
+		System.out.println(acc.balance);
+	}
+}
+o/p:
+	C.T.E : balance has private access in Account
+
+Abstraction 
+============
+Hiding internal implementation and highlighting the set of services is called abstraction.
+
+Using abstract classes and interfaces we can implements abstraction.
+
+The best example of abstraction is GUI ATM machine where bank people will hide internal implementation and highlights the set of services like banking, withdrawl, mini statement and etc.
+
+The main advantages of abstraction are 
+
+1) It gives security because it will hide internal implementation.
+
+2) Enhancement becomes more easy because without effecting enduser they can perform any changes   
+   in our internal system.
+
+3) It provides flexibility to the enduser to use the system.
+
+4) It improves maintainability of an application.
+
+
+Encapsulation 
+==============
+The process of encapsulating or grouping or wrapping variables and it's associate methods in a single entity is called encapsulation.
+
+The best example of encapsulation is a capsule.
+
+Diagram: class30.2
+
+Abstraction is used to hide the data and encapsulation is used to protect the data.
+
+A class is said to be encapsulated class if it supports data hiding and abstraction.
+
+In encapsulation for every variable we need to write setter and getter methods.
+
+Diagram: class30.3
+
+The main advantages of encapsulation are.
+
+1) It gives security.
+
+2) Enhancement becomes more easy.
+
+3) It provides flexibility to the enduser.
+
+4) It improves maintainability of an application.
+
+The main disadvantage of encapsulation is it will increase the length of our code and slowdown the exection process.
+
+ex:
+---
+class Student 
+{
+	//current class variables 
+	private int studId;
+	private String studName;
+	private double studFee;
+	
+	//setter methods 
+	public void setStudId(int studId)
+	{
+		this.studId=studId;
+	}
+	public void setStudName(String studName)
+	{
+		this.studName=studName;
+	}
+	public void setStudFee(double studFee)
+	{
+		this.studFee=studFee;
+	}
+	
+	//getter methods
+	public int getStudId()
+	{
+		return studId;
+	}
+	public String getStudName()
+	{
+		return studName;
+	}
+	public double getStudFee()
+	{
+		return studFee;
+	}
+}
+class Test 
+{
+	public static void main(String[] args)
+	{
+		Student s = new Student();
+		s.setStudId(101);
+		s.setStudName("Alan");
+		s.setStudFee(1000d);
+		
+		System.out.println("Student Id :"+s.getStudId());
+		System.out.println("Student Name :"+s.getStudName());
+		System.out.println("Student Fee :"+s.getStudFee());
+		
+	}
+}
+
+Example on toString() method 
+=============================
+
+ex:
+---
+class Student 
+{
+	//current class variables 
+	private int studId;
+	private String studName;
+	private double studFee;
+	
+	//setter methods 
+	public void setStudId(int studId)
+	{
+		this.studId=studId;
+	}
+	public void setStudName(String studName)
+	{
+		this.studName=studName;
+	}
+	public void setStudFee(double studFee)
+	{
+		this.studFee=studFee;
+	}
+	
+	//toString 
+	@Override
+	public String toString()
+	{
+		return "Student : ["+studId+","+studName+","+studFee+"]";
+	}
+}
+class Test 
+{
+	public static void main(String[] args)
+	{
+		Student s = new Student();
+		s.setStudId(101);
+		s.setStudName("Alan");
+		s.setStudFee(1000d);
+		
+		System.out.println(s);
+		
+	}
+}
+
+Q) What is the difference between POJO and Java Bean class?
+
+POJO						Java Bean
+---------------					-------------
+It can't be serialized.				It can be serialized.
+
+Fields can have any visibility.			Fields can have only private visibility.
+
+It may or may not have constructor.		It is compulsary to have zero argument constructor.
+
+It does not allow outside classes.		It allows outside classes.
+
+It does not allow outside interfaces.		It allows outside interfaces.
+
+It does not allow outside annotations.		IT allows outside annotations.
+	
+
+
+Q) What is tightly encapsulated class?
+
+A class is said to be tightly encapsulated if and only if all the variables of that class declared as private. Here we don't need to check these variables having setter or getter methods or not.
+
+ex:
+	class A 
+	{
+		private int i;
+	}	
+	//tighly encapsulated class 
+
+ex:
+	class A
+	{
+		private int i;
+		int j;	
+	}
+	//Not tighly encapsulated class 
+
+ex:
+---
+	class A 
+	{
+		int i;
+	}
+	class B extends A 
+	{
+		private int j;
+	}
+	// Not tightly encapsulated class.
+
+
+Assignment
+==========
+1) What is class?
+2) What is object?
+3) Difference between class and object?
+4) What is Data hiding?
+5) What is Abstraction?
+6) What is Encapsulation?
+7) What is Hashcode in java?
+8) What is toString() method in java?
+9) What is tightly encapsulated class?
+10) What is Object class?
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

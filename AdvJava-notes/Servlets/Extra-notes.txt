@@ -1,0 +1,156 @@
+Servlets
+======
+
+Why  we need to handle ServletException and IOException while using service() methodin servlets ?
+
+
+
+In Java Servlets, the service() method is a key part of the servlet lifecycle, and it is responsible for handling incoming client requests.
+ When you override or use this method, you are required to handle two specific exceptions:
+
+ServletException
+
+IOException
+
+Here's why you need to handle these exceptions:
+
+
+1. ServletException — for Servlet-related Issues
+---------------------------------------------------------------
+🔶This exception is thrown when the servlet encounters application-specific problems, such as:
+
+Issues with the request that prevent normal processing (e.g., missing or invalid parameters).
+
+->Problems in servlet configuration.
+
+- Errors while forwarding or including other resources via RequestDispatcher.
+
+- Internal servlet logic errors.
+
+Why handle it?
+It lets the servlet container know something went wrong at the application level, so it can generate an appropriate
+ HTTP error response (like a 500 Internal Server Error), and possibly log it or take other configured actions.
+
+
+2. IOException — for Input/Output Failures
+----------------------------------------------------------
+🔶This exception is thrown when there are problems with reading from or writing to the client, such as:
+
+The client closes the connection before the response is written.
+
+There are issues accessing request or response streams.
+
+Network failures during communication.
+
+Why handle it?
+Servlets often read input from the request (request.getInputStream(), request.getReader()) and write output to the response (response.getWriter()). 
+Any I/O operation is prone to failure, and the servlet container expects you to handle or propagate these failures.
+
+
+
+
+2) Why we use  ServletRequest req , ServletResponse res as perameters in Service methods ?
+
+
+The service() method in a Java servlet takes ServletRequest and ServletResponse as parameters because it needs to process the incoming client request and generate an appropriate response.
+ Here's a detailed explanation of why:
+
+🔶 1. ServletRequest req: To Access Client Request Data
+----------------------------------------------------------------------------
+This object contains all the information sent by the client (usually a browser), including:
+
+-HTTP headers
+
+-Form parameters (GET or POST)
+
+-Query strings
+
+-Cookies
+
+-Input stream (for reading the body of the request)
+
+-Client IP address and host
+
+-Protocol and method (GET, POST, etc.)
+
+Example usage:
+
+
+	String name = req.getParameter("name");
+	String method = req.getMethod(); // Only if cast to HttpServletRequest
+
+->Without ServletRequest, the servlet would have no way to know what the client is asking for.
+
+
+🔷 2. ServletResponse res: To Send Data Back to the Client
+-------------------------------------------------------------------------------
+This object is used to create and send the response back to the client. It allows you to:
+
+Set response headers (e.g., Content-Type, cookies)
+
+Write HTML, JSON, or other data using PrintWriter or OutputStream
+
+Set the HTTP status code (e.g., 200 OK, 404 Not Found)
+
+Example usage:
+
+	res.setContentType("text/html");
+	PrintWriter out = res.getWriter();
+	out.println("<h1>Hello, World!</h1>");
+
+->Without ServletResponse, the servlet would have no way to communicate back to the client.
+
+
+3) Why we use PrintWriter pw = res.getWriter() ?
+
+->Is used to get a character-based output stream so you can send text data (like HTML, JSON, plain text) back to the client (usually a web browser).
+
+->To Send Response Content to the Client
+You use PrintWriter to generate output like:
+
+-HTML pages
+
+-Plain text
+
+-JSON/XML (in text form)
+
+
+	pw.println("<html><body><h1>Hello, World!</h1></body></html>");
+->To Communicate via HTTP Response Body
+->The content written to the PrintWriter is what the client (like a browser or HTTP client) receives in the response body.
+->It’s the Standard Way to Write Text-Based Responses in Servlets
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

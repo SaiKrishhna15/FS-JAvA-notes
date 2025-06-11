@@ -1,0 +1,448 @@
+3) parseXxx()
+==============
+It is used to convert String type to primitive type.
+
+ex:
+---
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		String str="40";
+		
+		int i=Integer.parseInt(str);
+		System.out.println(i);
+		
+		long l=Long.parseLong(str);
+		System.out.println(l);
+		
+		float f=Float.parseFloat(str);
+		System.out.println(f);
+		
+		double d=Double.parseDouble(str);
+		System.out.println(d);
+	}
+}
+
+4) toString()
+==============
+It is used to convert wrapper object or primitive type to string type.
+
+ex:
+---
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		Integer i=new Integer(20);
+		String str = i.toString();
+		System.out.println(str); 
+		
+		int a=100;
+		String str2=Integer.toString(a);
+		System.out.println(str2);
+	}
+}
+
+Q) Write a java program to perform sum of two binary numbers?
+
+input:
+	1010
+	0101
+output:
+	1111
+
+ex:
+---
+import java.util.Scanner;
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		Scanner sc=new Scanner(System.in);
+		
+		System.out.println("Enter the first binary number :");
+		String binary1=sc.next(); // 1010
+		
+		System.out.println("Enter the second binary number :");
+		String binary2=sc.next(); // 0101
+		
+		//convert binary to decimal 
+		int a = Integer.parseInt(binary1,2);
+		int b = Integer.parseInt(binary2,2);
+	
+		int c = a + b;
+		
+		//convert decial to binary 
+		String result = Integer.toBinaryString(c);
+		System.out.println(result);
+	}
+}
+
+Enum 
+======
+Enum is a group of named constants.
+
+Enum concept introduced in 1.5 version.
+
+Using enum we can create our own datatype called enumerated datatype.	
+
+When compare to old language enum, java enum is more powerful.
+
+To declare enum we will use enum keyword.
+
+syntax:
+-------
+	enum  <type_name>
+	{
+		value1,value2,.....,valueN
+	}
+
+ex:
+----
+	enum Months 
+	{
+		JAN,FEB,MAR
+	}
+	
+Internal implementation of enum 
+--------------------------------
+Internally, every enum consider as class concept and it extends with java.lang.Enum class.
+
+Every enum constant is a reference variable of enum type.
+
+ex:
+
+
+enum Months 			final class Months extends java.lang.Enum  		
+{				{
+	JAN,FEB,MAR	==>		public static final Months JAN=new Months();
+}					public static final Months FEB=new Months();
+					public static final Months MAR=new Months();
+				}
+
+Declaration and usage of enum 
+-------------------------------
+enum Months 
+{
+	JAN,FEB,MAR
+}
+class Test 
+{
+	public static void main(String[] args)
+	{
+		Months m =Months.JAN;
+		System.out.println(m);
+	}
+}
+
+
+From 1.5 version onwards we can pass enum to switch case.
+
+ex:
+---
+enum Months 
+{
+	JAN,FEB,MAR
+}
+class Test 
+{
+	public static void main(String[] args)
+	{
+		Months m =Months.MAR;
+		
+		switch(m)
+		{
+			case JAN: System.out.println("January"); break;
+			case FEB: System.out.println("February"); break;
+			case MAR: System.out.println("March"); break;
+		}
+	}
+}
+
+java.lang.Enum 
+--------------
+The power to enum will be inherited from java.lang.Enum class.
+
+It contains following two methods.
+
+1) values() 
+----------
+	It returns group of constants from enum.
+
+2) ordinal() 
+-----------
+	It returns ordinal number.
+
+ex:
+----
+enum Drinks
+{
+	COLA,PEPSI,COKE,MAZAA		
+}
+class Test
+{
+	public static void main(String[] args)
+	{
+		Drinks[] d = Drinks.values();
+		
+		for(Drinks d1:d)
+		{
+			System.out.println(d1+"-----------"+d1.ordinal());
+		}
+	}
+}
+
+When compare to old language enum , java enum is more powerful because in addition to constants we can declare variables, methods and constructors.
+
+ex:
+---
+enum Week
+{
+	MON,TUE,WED,THU,FRI,SAT,SUN;
+	
+	Week()
+	{
+		System.out.println("constructor");
+	}
+}
+class Test 
+{
+	public static void main(String[] args)
+	{
+		Week w = Week.SAT;
+	}
+}
+
+ex:
+---
+enum Cloths 
+{
+	SILK,COTTON,KHADI;
+	
+	static int i=100;
+	
+	public static void main(String[] args)
+	{
+		System.out.println(i); 
+	}
+}
+
+Inner classes 
+=============
+Sometimes we will declare a class inside another class such concept is called inner class.
+
+ex:
+	class Outer_class
+	{
+		class Inner_class
+		{
+			-
+			- //some code 
+			- 
+		}
+	}
+
+Inner class must declare within the scope of enclosing class.
+
+Inner classes introduced as a part of event handling to remove GUI bugs.
+
+But due to powerful features and benefits of inner classes. Programmers started to use inner classes
+in regular programming.
+
+Inner classes do not support static members.
+
+Accessing inner class data from static area of outer class 
+----------------------------------------------------------
+class Outer 
+{
+	class Inner 
+	{
+		public void m1()
+		{
+			System.out.println("Inner-M1 Method");
+		}
+	}
+	
+	public static void main(String[] args)
+	{
+		Outer.Inner i = new Outer().new Inner();
+		i.m1();
+	}	
+}
+
+Once if we compile above program we will get two .class files i.e Outer.class and Outer$Inner.class.
+
+ex:
+---
+class Outer 
+{
+	class Inner 
+	{
+		public void m1()
+		{
+			System.out.println("Inner-M1 Method");
+		}
+	}
+	
+	public static void main(String[] args)
+	{
+		new Outer().new Inner().m1();
+	}	
+}
+
+Accessing inner class data from non-static area of outer class
+--------------------------------------------------------------
+class Outer 
+{
+	class Inner 
+	{
+		public void m1()
+		{
+			System.out.println("Inner-M1 Method");
+		}
+	}
+	
+	public void m2()
+	{
+		Inner i = new Inner();
+		i.m1();
+	}
+	
+	public static void main(String[] args)
+	{
+		Outer o = new Outer();
+		o.m2();
+	}	
+}
+
+
+Cloning 
+========
+The process of creating exact duplicate object is called cloning.
+
+The main objective of cloning is to maintain backup.
+
+We can perform cloning only for clonable objects.
+
+An object is said to be cloneable if it's corresponding class implements Cloneable interface.
+
+A Cloneable interface present in java.lang package and it does not have any methods.
+
+A Cloneable is a marker interface where required ability will be provided automatically by the JVM.
+
+To perform cloning we need to use clone() method of Object class.
+
+ex:
+	protected native Object clone()throws CloneNotSupportedException 
+
+ex:
+---
+class Test implements Cloneable
+{
+	//instance variables 
+	int i=10,j=20;
+	
+	public static void main(String[] args)throws CloneNotSupportedException
+	{
+		Test t1=new Test();
+		System.out.println(t1.i+" "+t1.j); // 10  20
+		System.out.println(t1.hashCode()); // 1599771323
+		
+		Test t2=(Test)t1.clone();
+		System.out.println(t2.i+" "+t2.j); // 10  20
+		System.out.println(t2.hashCode()); // 1876631416
+	}
+}
+
+
+Q) What is the difference between shallow cloning and deep cloning?
+
+Shallow cloning  
+---------------
+The process of creating exact duplicate reference variable but not object is called shallow cloning. 
+ex:
+	Test t1=new Test();
+	Test t2=t1;
+
+Diagram: class35.1
+
+ex:
+---
+class Test 
+{
+	//instance variables 
+	int i=10,j=20;
+	
+	public static void main(String[] args)
+	{
+		Test t1=new Test();
+		System.out.println(t1.i+" "+t1.j); // 10  20
+		System.out.println(t1.hashCode()); //1599771323
+		
+		Test t2=t1;
+		System.out.println(t2.i+" "+t2.j); // 10  20
+		System.out.println(t2.hashCode()); //1599771323
+		
+	}
+}
+
+
+Deep cloning 
+------------
+The process of creating exact duplicate object is called deep cloning.
+ex:
+	Test t1=new Test();
+	Test t2=(Test)t1.clone();
+
+Diagram: class35.2
+
+ex:
+---
+class Test implements Cloneable
+{
+	//instance variables 
+	int i=10,j=20;
+	
+	public static void main(String[] args)throws CloneNotSupportedException
+	{
+		Test t1=new Test();
+		System.out.println(t1.i+" "+t1.j); // 10  20
+		System.out.println(t1.hashCode()); // 1599771323
+		
+		Test t2=(Test)t1.clone();
+		System.out.println(t2.i+" "+t2.j); // 10  20
+		System.out.println(t2.hashCode()); // 1876631416
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

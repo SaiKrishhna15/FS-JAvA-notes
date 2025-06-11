@@ -1,0 +1,188 @@
+Naming Conventions in java
+==========================
+In java, uppercase letters will consider as different and lowercase letters will consider as different. Hence we consider java is a case sensitive programming language.
+
+As java is a case sensitive, we must and should follow naming conventions for following things.
+
+ex:
+	classes 
+	interfaces
+	variables 
+	methods
+	keywords
+	packages
+	constants 
+
+classes 
+--------
+In java, a class name must and should starts with uppercase letter and if it contains multiple words then each inner word must starts with initcap.
+
+ex:
+	predefined classes		userdefined classes
+	------------------		-------------------
+	System 				Test
+	FileWriter 			TestApp 
+	BufferedReader 			DemoApp
+	StringBuffer 			ExampleProgram
+	and etc.			and etc.
+
+interfaces
+----------
+In java, an interface name must and should starts with uppercase letter and if it contains multiple words then each inner word must starts with initcap.
+
+ex:
+	predefined interfaces		userdefined interfaces
+	--------------------		----------------------
+	Runnable 			ITest
+	Serializable			IDemoApp 
+	ListIterator 			ITestApp
+	Comparator 			IExampleApp
+	and etc.			and etc.
+
+
+variables
+----------
+In java, a variable name must and should starts with lowercase letter and if it contains multiple words then each inner word must starts with initcap.
+
+ex:
+	predefined variables		userdefined variables
+	-------------------		----------------------
+	length 				empId
+	out				studName
+	err 				deptNo
+	in 				tutionFee
+	and etc.			and etc.
+
+methods
+---------
+In java, a method name must and should starts with lowercase letter and if it contains multiple words then each inner word must starts with initcap.
+
+ex:
+	predefined methods		userdefined methods
+	------------------		--------------------
+	getClass()			getDetails()
+	hashCode()			setInfo()
+	toString()			caculateBillAmt()
+	getPriority()			fetchStudentInfo()
+	setName()			and etc.
+	and etc.	
+
+
+keywords
+---------
+In java, all keywords we need to declare under lowercase letters only.
+
+ex:
+	predefined keywords 
+	-------------------
+	class, public, void , static, if , else, do , for, switch and etc.
+
+packages
+----------
+In java, all packages we need to declare under lowercase letters only.
+
+ex:
+	predefined packages		userdefined packages
+	--------------------		-------------------
+	java.lang			com.ihub.www
+	java.io				com.google.www
+	java.util			com.qt.www
+	java.util.stream 		and etc.
+	java.time 
+	java.text 
+	java.sql 
+	and etc.
+
+constants 
+-----------
+In java, constants we need to declare under uppercase letters only.
+
+ex:
+	predefined constants 		userdefined constants
+	-------------------		---------------------
+	MAX_PRIORITY 			N=10;
+	NORM_PRIORITY 			LIMIT=40;
+	MIN_PRIORITY 			and etc.
+	MAX_VALUE 
+	MIN_VALUE 
+	and etc.
+
+Interview Question
+==================
+
+Q) Which package consider as default package in java?
+
+	java.lang package 
+
+
+
+Q) What is the difference between JDK, JRE and JVM?
+
+JDK
+----
+JDK stands for Java Development Kit.
+
+It is a installable software which consist Java Runtime Environment (JRE), Java Virtual Machine (JVM), compiler (javac), interpreter (java), an archiever (.jar), document generator (javadoc) and other tools need for java application development.
+
+JRE 
+----
+JRE stands for Java Runtime Environment.
+It provides very good environment to run java applications only.
+
+JVM
+----
+JVM is an interpreter which is used to execute our program line by line procedure.
+
+
+Diagram: class3.1
+
+
+Q) Is java platform dependent or independent?
+
+Java is a platform independent.
+
+Diagram: class3.2
+
+
+
+Q) Is JVM platform dependent or independent?
+
+JVM is a platform dependent. 
+
+
+Assignment 
+===========
+
+1) class 	:	QualityThought 
+
+2) interface 	:	IQualityThought 
+
+3) variable 	:	qualityThought 
+
+4) method 	:	qualityThought()
+
+5) package	:	com.qualitythought.www
+
+6) constant 	:	QUALITY_THOUGHT
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
